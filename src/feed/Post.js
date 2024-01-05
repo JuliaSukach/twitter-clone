@@ -11,14 +11,14 @@ import "./Post.css";
 import { doc, deleteDoc } from "firebase/firestore";
 import db from "../firebase/firebase";
 
-function Post({ displayName, username, verified, text, image, avatar, key, onTweetAdded }) {
+function Post({ displayName, username, verified, text, image, avatar, id, onTweetAdded }) {
     const [isMenuVisible, setMenuVisibility] = useState(false)
     const toggleMenu = () => {
         setMenuVisibility(!isMenuVisible);
     };
-    const handleOptionClick = (action, key) => {
+    const handleOptionClick = (action, id) => {
         if (action === 'delete') {
-            const docRef = doc(db, 'posts', 'AkOMI4HdHBhFTTpeVs7K');
+            const docRef = doc(db, 'posts', id);
             deleteDoc(docRef)
                 .then(() => {
                     console.log("Entire Document has been deleted successfully.")
@@ -30,7 +30,7 @@ function Post({ displayName, username, verified, text, image, avatar, key, onTwe
         }
     }
     return (
-        <div className="post" key={key}>
+        <div className="post" id={id}>
             <div className="post__avatar">
                 <Avatar src={avatar} />
             </div>
@@ -54,7 +54,7 @@ function Post({ displayName, username, verified, text, image, avatar, key, onTwe
                         {isMenuVisible && (
                             <div className="menu">
                                 <ul>
-                                    <li onClick={() => handleOptionClick('delete', text)}>Delete Post</li>
+                                    <li onClick={() => handleOptionClick('delete', id)}>Delete Post</li>
                                 </ul>
                             </div>
                         )}

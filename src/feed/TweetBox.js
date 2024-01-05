@@ -21,6 +21,7 @@ const TweetBox = ({ onTweetAdded }) => {
                 text: tweetMessage,
                 image: tweetImage,
             })
+            onTweetAdded();
         } catch (e) {
             console.error("Error adding document: ", e);
             setError("An error occurred while sending the tweet. Please try again.");
@@ -28,8 +29,6 @@ const TweetBox = ({ onTweetAdded }) => {
 
         setTweetMessage("");
         setTweetImage("");
-
-        onTweetAdded();
     }
 
     return (

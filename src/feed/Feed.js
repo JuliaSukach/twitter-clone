@@ -26,7 +26,7 @@ function Feed() {
                 <h2>Home</h2>
             </div>
             <TweetBox onTweetAdded={fetchPost}/>
-            {posts.map((post, i) => (
+            {posts.map((post) => (
                 <Post
                     onTweetAdded={fetchPost}
                     displayName={post.displayName}
@@ -35,7 +35,7 @@ function Feed() {
                     text={post.text}
                     avatar={post.avatar}
                     image={post.image}
-                    key={post.i}
+                    id={post.id}
                 />
             ))}
         </div>
