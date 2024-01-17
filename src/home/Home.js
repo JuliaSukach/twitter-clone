@@ -4,6 +4,7 @@ import { signInWithGooglePopup, signUpWithEmail, signInExistingUser } from "../f
 import { BrowserRouter as Router, Link, Navigate, useNavigate } from "react-router-dom";
 import CreateUserModal from "../auth/CreateUserModal";
 import SignUpModal from "../auth/SignUpModal";
+import Footer from "../footer/Footer";
 import { collection, addDoc } from "firebase/firestore";
 import db from "../firebase/firebase";
 
@@ -91,8 +92,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="footer">
-            </div>
+            <Footer></Footer>
             {isCreateUserOpen && <CreateUserModal setIsCreateUserOpen={setIsCreateUserOpen} signUpUser={signUpUser} />}
             {isLoginUserOpen && <SignUpModal setIsLoginUserOpen={setIsLoginUserOpen} logInUser={logInUser} />}
         </div>
