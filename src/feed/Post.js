@@ -7,7 +7,7 @@ import {
     VerifiedUser,
 } from "@material-ui/icons";
 import React, { useState } from "react";
-import "./Post.css";
+import "../css/feed/Post.css";
 import { doc, deleteDoc } from "firebase/firestore";
 import db from "../firebase/firebase";
 
