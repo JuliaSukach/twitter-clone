@@ -1,16 +1,18 @@
 import React from "react";
-import "./App.css";
-import Feed from "./feed/Feed";
-import Sidebar from "./sidebar/Sidebar";
-import Widgets from "./widgets/Widgets";
+import "./css/App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./home/Home";
+import User from "./user/User";
 
 function App() {
   return (
-    <div className="app">
-      <Sidebar />
-      <Feed />
-      <Widgets />
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/user" element={<User />} />
+      <Route path="/" element={<Home />}>
+      </Route>
+    </Routes>
+  </BrowserRouter>
   );
 }
 

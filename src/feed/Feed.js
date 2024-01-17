@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Feed.css";
+import "../css/feed/Feed.css";
 import Post from "./Post";
 import TweetBox from "./TweetBox";
 import { collection, getDocs } from "firebase/firestore";
