@@ -1,0 +1,380 @@
+.group {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.group .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80vw;
+  min-width: 600px;
+  height: 650px;
+  min-height: 400px;
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background: white;
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  z-index: 10;
+}
+.group .modal .darkBG {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.group .modal .darkBG .centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.group .modal .darkBG .centered .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80vw;
+  min-width: 600px;
+  height: 650px;
+  min-height: 400px;
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background: white;
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  z-index: 10;
+}
+.group .modal .darkBG .centered .modal .modalHeader {
+  display: flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+  max-width: 600px;
+  width: 100%;
+  height: 53px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background: white;
+  overflow: hidden;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+.group .modal .darkBG .centered .modal .modalHeader .step {
+  margin: 0;
+  padding: 10px;
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+}
+.group .modal .darkBG .centered .modal .modalHeader .closeBtn {
+  top: 0;
+  min-width: 56px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 500;
+  color: #2c3e50;
+  border: none;
+  border-radius: 8px;
+  background: white;
+}
+.group .modal .darkBG .centered .modal .modalHeader .closeBtn:hover {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  transform: translate(-4px, 4px);
+}
+.group .modal .darkBG .centered .modal .modalContent {
+  flex-grow: 1;
+  flex-basis: auto;
+  margin: 0px;
+  min-height: 0px;
+  min-width: 0px;
+  padding: 0px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+  font-size: 14px;
+  color: #2c3e50;
+  text-align: center;
+  display: flex;
+  max-width: 600px;
+  flex-shrink: 1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper {
+  padding-left: 80px;
+  padding-right: 80px;
+  flex-grow: 1;
+  overflow: auto;
+  align-items: stretch;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0 solid black;
+  box-sizing: border-box;
+  display: flex;
+  flex-basis: auto;
+  flex-direction: column;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0px;
+  min-height: 0px;
+  min-width: 0px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .header {
+  box-sizing: border-box;
+  display: flex;
+  text-align: initial;
+  margin: 0px;
+  min-height: 0px;
+  min-width: 0px;
+  padding: 0px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .header > h1 {
+  width: 100%;
+  font-size: 31px;
+  font-weight: 700;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  align-items: stretch;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0 solid black;
+  box-sizing: border-box;
+  display: flex;
+  flex-basis: auto;
+  flex-direction: column;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0px;
+  min-height: 0px;
+  min-width: 0px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name label,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login label,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday label {
+  display: flex;
+  box-sizing: border-box;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-width: 1px;
+  border-radius: 4px;
+  border-color: #333639;
+  flex-direction: column;
+  border-style: solid;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name label .inputWrap,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login label .inputWrap,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday label .inputWrap {
+  text-align: left;
+  text-overflow: unset;
+  color: #71767b;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 14px;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name label .inputWrap span,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login label .inputWrap span,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday label .inputWrap span {
+  line-height: 24px;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name label .inputWrap input,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login label .inputWrap input,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday label .inputWrap input {
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm {
+  text-align: left;
+  margin-top: 20px;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .title {
+  margin-bottom: 8px;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .title span {
+  text-overflow: unset;
+  font-weight: 700;
+  line-height: 20px;
+  font-size: 15px;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .subtitle {
+  margin-bottom: 4px;
+  line-height: 16px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month {
+  margin-right: 12px;
+  flex-grow: 2;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day {
+  margin-right: 12px;
+  flex-grow: 1;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year {
+  flex-grow: 1;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year {
+  display: flex;
+  background-color: #ffffff;
+  border-color: #cfd9de;
+  border-radius: 4px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-width: 1px;
+  flex-direction: column;
+  border-style: solid;
+  position: relative;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month label,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day label,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year label {
+  padding-top: 8px;
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month select,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day select,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year select {
+  border: none;
+  padding-bottom: 8px;
+  padding-top: 12px;
+  margin-top: 16px;
+  line-height: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  font-size: 17px;
+  color: #0f1419;
+  padding-left: 8px;
+  padding-right: 8px;
+  appearance: none;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month svg,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day svg,
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year svg {
+  margin-top: -0.75em;
+  height: 1.5em;
+  right: 12px;
+  position: absolute;
+  max-width: 100%;
+  top: 50%;
+  vertical-align: text-bottom;
+  display: inline-block;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .modalActions {
+  flex-grow: 1;
+  bottom: 2px;
+  width: 100%;
+  align-items: stretch;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0 solid black;
+  box-sizing: border-box;
+  display: flex;
+  flex-basis: auto;
+  flex-direction: row;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0px;
+  min-height: 0px;
+  min-width: 0px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .modalActions .actionsContainer {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 24px;
+  margin-top: 24px;
+  padding-left: 32px;
+  padding-right: 32px;
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-width: 1px;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-style: solid;
+  background-color: #eff3f4;
+  width: 100%;
+  cursor: pointer;
+}
+.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .modalActions .actionsContainer button {
+  background-color: #eff3f4;
+  border-color: rgba(0, 0, 0, 0);
+  min-width: 52px;
+  max-width: 100%;
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 700;
+  color: black;
+  cursor: pointer;
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+/*# sourceMappingURL=CreateUserModal.css.map */
