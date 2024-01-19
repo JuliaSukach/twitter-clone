@@ -254,4 +254,18 @@
   vertical-align: text-bottom;
   color: #0f1419;
 }
+.containerBlock {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0 solid black;
+  box-sizing: border-box;
+  color: #000000;
+  display: inline;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 /*# sourceMappingURL=Home.css.map */

@@ -72,7 +72,7 @@ function Home() {
                                         <div className="authForm container">
                                             <div className="googleAuth container button" onClick={logGoogleUser}>
                                                 <div className="buttonContent container">
-                                                    <svg viewBox="0 0 24 24" aria-hidden="true" class="gmail-icon">
+                                                    <svg viewBox="0 0 24 24" aria-hidden="true" className="gmail-icon">
                                                         <g>
                                                             <path d="M18.977 4.322L16 7.3c-1.023-.838-2.326-1.35-3.768-1.35-2.69 0-4.95 1.73-5.74 4.152l-3.44-2.635c1.656-3.387 5.134-5.705 9.18-5.705 2.605 0 4.93.977 6.745 2.56z" fill="#EA4335"></path>
                                                             <path d="M6.186 12c0 .66.102 1.293.307 1.89L3.05 16.533C2.38 15.17 2 13.63 2 12s.38-3.173 1.05-4.533l3.443 2.635c-.204.595-.307 1.238-.307 1.898z" fill="#FBBC05"></path>

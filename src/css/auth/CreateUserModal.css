@@ -1,380 +1,448 @@
 .group {
   position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 100%;
-  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  top: 0px;
+  width: 100vw;
+  height: 100%;
+  outline-style: none;
+}
+.group .bgContainer {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .group .modal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-shrink: 1;
   max-width: 80vw;
   min-width: 600px;
-  height: 650px;
-  min-height: 400px;
   max-height: 90vh;
+  min-height: 400px;
+  height: 650px;
+  border-radius: 16px;
   overflow-x: hidden;
   overflow-y: hidden;
-  background: white;
-  color: white;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  z-index: 10;
 }
-.group .modal .darkBG {
-  background-color: rgba(0, 0, 0, 0.2);
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
+.group .modal .modalContent {
+  flex-shrink: 1;
+  flex-grow: 1;
+  background-color: #ffffff;
 }
-.group .modal .darkBG .centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.group .modal .modalContent .alignContent {
+  flex-shrink: 1;
+  flex-grow: 1;
+  align-self: stretch;
 }
-.group .modal .darkBG .centered .modal {
-  display: flex;
-  flex-direction: column;
+.group .modal .modalContent .alignContent .header {
+  height: 53px;
+  z-index: 2;
+}
+.group .modal .modalContent .alignContent .header .headerWrap {
+  flex-direction: row;
   align-items: center;
-  max-width: 80vw;
-  min-width: 600px;
-  height: 650px;
-  min-height: 400px;
-  max-height: 90vh;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  background: white;
-  color: white;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  z-index: 10;
-}
-.group .modal .darkBG .centered .modal .modalHeader {
-  display: flex;
-  align-items: flex-end;
-  box-sizing: border-box;
+  justify-content: center;
   max-width: 600px;
   width: 100%;
   height: 53px;
   padding-left: 16px;
   padding-right: 16px;
-  background: white;
-  overflow: hidden;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-.group .modal .darkBG .centered .modal .modalHeader .step {
-  margin: 0;
-  padding: 10px;
-  color: #2c3e50;
-  font-weight: 700;
-  font-size: 20px;
-  text-align: center;
-}
-.group .modal .darkBG .centered .modal .modalHeader .closeBtn {
-  top: 0;
-  min-width: 56px;
-  cursor: pointer;
-  font-size: 24px;
-  font-weight: 500;
-  color: #2c3e50;
-  border: none;
-  border-radius: 8px;
-  background: white;
-}
-.group .modal .darkBG .centered .modal .modalHeader .closeBtn:hover {
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  transform: translate(-4px, 4px);
-}
-.group .modal .darkBG .centered .modal .modalContent {
-  flex-grow: 1;
-  flex-basis: auto;
-  margin: 0px;
-  min-height: 0px;
-  min-width: 0px;
-  padding: 0px;
-  position: relative;
-  text-decoration: none;
-  z-index: 0;
-  font-size: 14px;
-  color: #2c3e50;
-  text-align: center;
-  display: flex;
-  max-width: 600px;
-  flex-shrink: 1;
-  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  box-sizing: border-box;
-  flex-direction: column;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper {
+.group .modal .modalContent .alignContent .header .headerWrap .closeContainer {
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+  min-width: 56px;
+  min-height: 32px;
+}
+.group .modal .modalContent .alignContent .header .headerWrap .closeContainer .closeWrap {
+  min-width: 36px;
+  min-height: 36px;
+  margin-left: calc(-8px);
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+  outline-style: none;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+.group .modal .modalContent .alignContent .header .headerWrap .closeContainer .closeWrap .close {
+  flex-grow: 1;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  min-width: 0px;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  color: #0f1419;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  text-overflow: unset;
+  word-wrap: break-word;
+}
+.group .modal .modalContent .alignContent .header .headerWrap .closeContainer .closeWrap .close svg {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  width: 20px;
+  height: 20px;
+  color: #0f1419;
+  vertical-align: text-bottom;
+}
+.group .modal .modalContent .alignContent .header .headerWrap .titleContainer {
+  flex-grow: 1;
+  flex-shrink: 1;
+  justify-content: center;
+  height: 100%;
+}
+.group .modal .modalContent .alignContent .header .headerWrap .titleContainer .container {
+  align-items: flex-start;
+}
+.group .modal .modalContent .alignContent .header .headerWrap .titleContainer .container h2 {
+  display: inline;
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  max-width: 100%;
+  min-width: 0px;
+  line-height: 24px;
+  font-size: 20px;
+  font-weight: 700;
+  text-overflow: unset;
+  color: #0f1419;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.group .modal .modalContent .alignContent .accountInfo {
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  width: 100%;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent {
   padding-left: 80px;
   padding-right: 80px;
-  flex-grow: 1;
-  overflow: auto;
-  align-items: stretch;
-  background-color: rgba(0, 0, 0, 0);
-  border: 0 solid black;
-  box-sizing: border-box;
-  display: flex;
-  flex-basis: auto;
-  flex-direction: column;
-  flex-shrink: 0;
-  list-style: none;
-  margin: 0px;
-  min-height: 0px;
-  min-width: 0px;
-  position: relative;
-  text-decoration: none;
-  z-index: 0;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .header {
-  box-sizing: border-box;
-  display: flex;
-  text-align: initial;
-  margin: 0px;
-  min-height: 0px;
-  min-width: 0px;
-  padding: 0px;
-  position: relative;
-  text-decoration: none;
-  z-index: 0;
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .infoHeader {
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .header > h1 {
-  width: 100%;
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .infoHeader h1 {
+  min-width: 0px;
+  color: #0f1419;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 31px;
   font-weight: 700;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-bottom: 12px;
-  padding-top: 12px;
-  align-items: stretch;
-  background-color: rgba(0, 0, 0, 0);
-  border: 0 solid black;
-  box-sizing: border-box;
-  display: flex;
-  flex-basis: auto;
-  flex-direction: column;
-  flex-shrink: 0;
-  list-style: none;
-  margin: 0px;
-  min-height: 0px;
-  min-width: 0px;
-  position: relative;
-  text-decoration: none;
-  z-index: 0;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name label,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login label,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday label {
-  display: flex;
-  box-sizing: border-box;
-  border-bottom-width: 1px;
-  border-left-width: 1px;
-  border-right-width: 1px;
-  border-top-width: 1px;
-  border-radius: 4px;
-  border-color: #333639;
-  flex-direction: column;
-  border-style: solid;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name label .inputWrap,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login label .inputWrap,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday label .inputWrap {
-  text-align: left;
+  line-height: 36px;
+  word-wrap: break-word;
   text-overflow: unset;
-  color: #71767b;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 14px;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name label .inputWrap span,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login label .inputWrap span,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday label .inputWrap span {
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .infoHeader h1 span {
+  text-overflow: unset;
+  word-wrap: break-word;
+  font-family: inherit;
+  min-width: 0px;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox {
+  padding: 12px 0px;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label {
+  flex-direction: row;
+  border-color: #cfd9de;
+  border-radius: 4px;
+  border-width: 1px;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label .inputWrap,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label .inputWrap {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label .inputWrap .userInput,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label .inputWrap .userInput {
+  position: absolute;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label .inputWrap .userInput .textWrap,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label .inputWrap .userInput .textWrap {
+  padding: 16px 8px 0px 8px;
+  max-width: 100%;
+  min-width: 0px;
+  text-overflow: unset;
+  color: #536471;
+  font-size: 17px;
+  font-weight: 400;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s, color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s, font-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s, padding-top 150ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  line-height: 24px;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label .inputWrap .userInput .textWrap span,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label .inputWrap .userInput .textWrap span {
+  color: inherit;
+  min-width: 0px;
+  font-family: inherit;
+  word-wrap: break-word;
+  text-overflow: unset;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label .inputWrap .userInput .polite,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label .inputWrap .userInput .polite {
+  display: none;
+  max-width: 100%;
+  flex: 1;
+  justify-content: right;
+  flex-direction: column;
+  padding: 6px 6px 0px 6px;
+  font-size: 13px;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label .inputWrap .userInput .polite .politeWrap,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label .inputWrap .userInput .polite .politeWrap {
+  flex-direction: row;
+  justify-content: end;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label .inputWrap .inputBox,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label .inputWrap .inputBox {
+  flex-direction: row;
+  flex-shrink: 1;
+  flex-grow: 1;
+  margin-top: 16px;
+  padding: 12px 8px 8px 8px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label .inputWrap .inputBox .containerBlock,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label .inputWrap .inputBox .containerBlock {
+  display: flex;
+  text-overflow: unset;
+  color: #0f1419;
+  word-wrap: break-word;
+  min-width: 0px;
+  font-size: 17px;
+  font-weight: 400;
+  width: 100%;
+  align-items: center;
   line-height: 24px;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .name label .inputWrap input,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .login label .inputWrap input,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthday label .inputWrap input {
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox label .inputWrap .inputBox .containerBlock input,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox label .inputWrap .inputBox .containerBlock input {
   box-sizing: border-box;
-  width: 100%;
-  border: none;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm {
+  padding: 0px;
   text-align: left;
+  width: 100%;
+  border-radius: 0px;
+  border-width: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: inherit;
+  appearance: none;
+  outline-style: none;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .hidden,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .hidden {
+  flex-direction: row;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .hidden .box,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .hidden .box {
+  flex: 1;
+  flex-direction: column;
+  padding-right: 20px;
+  padding-top: 2px;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel {
+  border: 2px solid #1d9bf0;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel .textWrap,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel .textWrap {
+  padding: 8px 8px 0px 8px !important;
+  line-height: normal !important;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel .textWrap span,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel .textWrap span {
+  vertical-align: top;
+  font-size: small;
+  color: #1d9bf0 !important;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel .polite,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel .polite {
+  display: flex !important;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm {
   margin-top: 20px;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .title {
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .title {
   margin-bottom: 8px;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .title span {
-  text-overflow: unset;
+  min-width: 0px;
+  color: #0f1419;
+  font-size: 15px;
   font-weight: 700;
   line-height: 20px;
-  font-size: 15px;
+  word-wrap: break-word;
+  text-overflow: unset;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .subtitle {
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .subtitle {
   margin-bottom: 4px;
-  line-height: 16px;
+  min-width: 0px;
+  color: #536471;
   font-size: 14px;
   font-weight: 400;
+  line-height: 16px;
+  text-overflow: unset;
+  word-wrap: break-word;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker {
-  display: flex;
-  box-sizing: border-box;
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .title span,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .subtitle span {
+  color: inherit;
+  min-width: 0px;
+  text-overflow: unset;
+  word-wrap: break-word;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker {
   flex-direction: row;
   margin-bottom: 16px;
   margin-top: 16px;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month {
-  margin-right: 12px;
-  flex-grow: 2;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day {
-  margin-right: 12px;
-  flex-grow: 1;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year {
-  flex-grow: 1;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year {
-  display: flex;
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker .dataBox {
   background-color: #ffffff;
   border-color: #cfd9de;
   border-radius: 4px;
-  border-bottom-width: 1px;
-  border-left-width: 1px;
-  border-right-width: 1px;
-  border-top-width: 1px;
-  flex-direction: column;
-  border-style: solid;
-  position: relative;
+  border-width: 1px;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month label,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day label,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year label {
-  padding-top: 8px;
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker .dataBox label {
   position: absolute;
+  padding-top: 8px;
   padding-left: 8px;
   padding-right: 8px;
+  min-width: 0px;
+  font-size: 13px;
+  font-weight: 400;
+  text-overflow: unset;
+  color: #536471;
+  line-height: 16px;
+  word-wrap: break-word;
+  pointer-events: none!important;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month select,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day select,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year select {
-  border: none;
-  padding-bottom: 8px;
-  padding-top: 12px;
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker .dataBox label span {
+  color: inherit;
+  text-overflow: unset;
+  word-wrap: break-word;
+  min-width: 0px;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker .dataBox select {
+  margin: 0px;
   margin-top: 16px;
-  line-height: 20px;
+  padding: 12px 8px 8px 8px;
+  border-width: 0px;
+  border-radius: 0px;
   background-color: rgba(0, 0, 0, 0);
-  cursor: pointer;
-  font-size: 17px;
   color: #0f1419;
-  padding-left: 8px;
-  padding-right: 8px;
+  font-size: 17px;
+  line-height: 20px;
+  outline-style: none;
   appearance: none;
+  cursor: pointer;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .month svg,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .day svg,
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .birthdayForm .datePicker .year svg {
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker .dataBox select option {
+  background-color: #ffffff;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker .dataBox svg {
+  display: inline-block;
+  position: absolute;
   margin-top: -0.75em;
+  max-width: 100%;
+  vertical-align: text-bottom;
   height: 1.5em;
   right: 12px;
-  position: absolute;
-  max-width: 100%;
   top: 50%;
-  vertical-align: text-bottom;
-  display: inline-block;
+  color: #536471;
+  pointer-events: none!important;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .modalActions {
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker .month {
+  flex-grow: 2;
+  margin-right: 12px;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker .day {
   flex-grow: 1;
-  bottom: 2px;
-  width: 100%;
-  align-items: stretch;
-  background-color: rgba(0, 0, 0, 0);
-  border: 0 solid black;
-  box-sizing: border-box;
-  display: flex;
-  flex-basis: auto;
-  flex-direction: row;
-  flex-shrink: 0;
-  list-style: none;
-  margin: 0px;
-  min-height: 0px;
-  min-width: 0px;
-  position: relative;
-  text-decoration: none;
-  z-index: 0;
+  margin-right: 12px;
 }
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .modalActions .actionsContainer {
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm .dataPicker .year {
+  flex-grow: 1;
+}
+.group .modal .modalContent .alignContent .accountInfo .nextContainer {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+.group .modal .modalContent .alignContent .accountInfo .nextContainer .nextWrap {
   margin-bottom: 24px;
   margin-top: 24px;
+}
+.group .modal .modalContent .alignContent .accountInfo .nextContainer .nextWrap .nextBox {
   padding-left: 32px;
   padding-right: 32px;
-  border-bottom-left-radius: 9999px;
-  border-bottom-right-radius: 9999px;
-  border-top-left-radius: 9999px;
-  border-top-right-radius: 9999px;
-  border-bottom-width: 1px;
-  border-left-width: 1px;
-  border-right-width: 1px;
-  border-top-width: 1px;
-  border-bottom-style: solid;
-  border-left-style: solid;
-  border-right-style: solid;
-  border-top-style: solid;
-  background-color: #eff3f4;
-  width: 100%;
-  cursor: pointer;
-}
-.group .modal .darkBG .centered .modal .modalContent .wrapper .userInfo .modalActions .actionsContainer button {
-  background-color: #eff3f4;
-  border-color: rgba(0, 0, 0, 0);
   min-width: 52px;
-  max-width: 100%;
-  font-size: 17px;
-  line-height: 20px;
+  min-height: 52px;
+  background-color: #0f1419;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  transition-duration: 0.2s;
+  opacity: 0.5;
+  outline-style: none;
+}
+.group .modal .modalContent .alignContent .accountInfo .nextContainer .nextWrap .nextBox .nextContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: center;
+  min-width: 0px;
+  text-align: center;
+  text-overflow: unset;
+  color: #ffffff;
   font-weight: 700;
-  color: black;
-  cursor: pointer;
-  border-bottom-left-radius: 9999px;
-  border-bottom-right-radius: 9999px;
-  border-top-left-radius: 9999px;
-  border-top-right-radius: 9999px;
+  font-size: 15px;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+.group .modal .modalContent .alignContent .accountInfo .nextContainer .nextWrap .nextBox .nextContent span {
+  max-width: 100%;
+  min-width: 0px;
+  font-size: 17px;
+  color: inherit;
+  text-overflow: unset;
+  line-height: 20px;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 /*# sourceMappingURL=CreateUserModal.css.map */
