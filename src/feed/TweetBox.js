@@ -8,13 +8,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/firebase'; // Replace with your actual Firebase config import
 
 const TweetBox = ({ onTweetAdded }) => {
-    const [tweetMessage, setTweetMessage] = useState("");
-    const [tweetImage, setTweetImage] = useState("");
-    const [error, setError] = useState(null);
-    const [user] = useAuthState(auth);
+    const [tweetMessage, setTweetMessage] = useState("")
+    const [tweetImage, setTweetImage] = useState("")
+    const [error, setError] = useState(null)
+    const [user] = useAuthState(auth)
     const sendTweet = async (e) => {
         e.preventDefault();
-        debugger
         try {
             await addDoc(collection(db, 'posts'), {
                 username: "happystark",

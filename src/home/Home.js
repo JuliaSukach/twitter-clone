@@ -24,14 +24,14 @@ function Home() {
     const signUpUser = async (data) => {
         let { username, email, birthday } = data
         let password = 'LoveEdward123'
-        const response = await signUpWithEmail(email, password)
+        const response = await signUpWithEmail(email, password, username)
         if (response.user) {
             let user = response.user
             try {
                 await addDoc(collection(db, 'users'), {
                     email,
                     username,
-                    displayName: user?.displayName || "Default Display Name",
+                    displayName: username,
                     password,
                     birthday
                 })
@@ -54,7 +54,7 @@ function Home() {
         }
     }
     return (
-        <div className="app">
+        <div className="container">
             <div className="main">
                 <div className="logo">
                     <svg viewBox="0 0 24 24">

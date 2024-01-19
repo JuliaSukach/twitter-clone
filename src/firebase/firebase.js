@@ -1,7 +1,8 @@
 //import firebase from "./firebase";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
+    sendEmailVerification, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAE9WQ_pqV26AwG8Q3OUeXX8vf4AE4tAZc",
@@ -25,10 +26,15 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
-export const signUpWithEmail = async (email, password) => {
+export const signUpWithEmail = async (email, password, username) => {
     try {
+        debugger
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-        sendEmailVerification(userCredential.user);
+        sendEmailVerification(userCredential.user)
+        debugger
+        updateProfile(auth.currentUser, {
+            displayName: username
+        })
         return userCredential
     } catch (error) {
         console.error('Error signing up:', error.message);

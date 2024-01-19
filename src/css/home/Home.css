@@ -1,4 +1,4 @@
-.app {
+.container {
   display: flex;
   height: 100vh;
   max-width: 100%;
@@ -6,23 +6,23 @@
   margin-right: auto;
   flex-direction: column;
 }
-.app .main {
+.container .main {
   display: flex;
   height: 100%;
   width: 100%;
 }
-.app .main .logo,
-.app .main .auth {
+.container .main .logo,
+.container .main .auth {
   position: relative;
   display: flex;
   flex: 1 1;
   justify-content: center;
   align-items: center;
 }
-.app .main .auth {
+.container .main .auth {
   min-width: 45vw;
 }
-.app .main .auth .layout .title {
+.container .main .auth .layout .title {
   margin-bottom: 48px;
   margin-top: 48px;
   font-size: 64px;
@@ -32,7 +32,7 @@
   word-wrap: break-word;
   letter-spacing: -1.2px;
 }
-.app .main .auth .layout .subtitle {
+.container .main .auth .layout .subtitle {
   margin-bottom: 32px;
   font-size: 31px;
   font-family: "Verdana";
@@ -40,9 +40,9 @@
   word-wrap: break-word;
   letter-spacing: -1.2px;
 }
-.app .main .auth .layout .authForm .googleAuth,
-.app .main .auth .layout .authForm .createAcc,
-.app .main .auth .layout .authForm .loginLink {
+.container .main .auth .layout .authForm .googleAuth,
+.container .main .auth .layout .authForm .createAcc,
+.container .main .auth .layout .authForm .loginLink {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -65,7 +65,7 @@
   transition-duration: 0.2s;
   box-sizing: border-box;
 }
-.app .main .auth .layout .authForm .divider {
+.container .main .auth .layout .authForm .divider {
   display: flex;
   align-items: center;
   max-width: 380px;
@@ -73,26 +73,26 @@
   margin-bottom: 8px;
   margin-top: 8px;
 }
-.app .main .auth .layout .authForm .divider .left-line,
-.app .main .auth .layout .authForm .divider .right-line {
+.container .main .auth .layout .authForm .divider .left-line,
+.container .main .auth .layout .authForm .divider .right-line {
   flex: 1;
   height: 1px;
   background-color: #eff3f4;
 }
-.app .main .auth .layout .authForm .divider .center-text {
+.container .main .auth .layout .authForm .divider .center-text {
   margin: 0 8px;
   /* Adjust margin as needed */
 }
-.app .main .auth .layout .authForm .createAcc {
+.container .main .auth .layout .authForm .createAcc {
   background-color: #1d9bf0;
   color: #FFF;
 }
-.app .main .auth .layout .authForm .login {
+.container .main .auth .layout .authForm .login {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
 }
-.app .main .auth .layout .authForm .login span {
+.container .main .auth .layout .authForm .login span {
   background-color: rgba(0, 0, 0, 0);
   border: 0 solid black;
   box-sizing: border-box;
@@ -101,13 +101,13 @@
   font: 17px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: 700;
 }
-.app .main .auth .layout .authForm .login .loginLink {
+.container .main .auth .layout .authForm .login .loginLink {
   color: #1d9bf0;
 }
-.app .main .auth .layout .authForm .login > div {
+.container .main .auth .layout .authForm .login > div {
   margin-bottom: 20px;
 }
-.app .main .logo svg {
+.container .main .logo svg {
   max-height: 380px;
 }
 /*# sourceMappingURL=Home.css.map */
