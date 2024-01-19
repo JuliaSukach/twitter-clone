@@ -2,7 +2,11 @@ body {
   --twitter-color: #50b7f5;
   --twitter-background: #e6ecf0;
 }
-.app {
+#root {
+  height: 100%;
+  display: flex;
+}
+#root .app {
   display: flex;
   height: 100vh;
   max-width: 100%;

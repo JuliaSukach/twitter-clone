@@ -1,126 +1,288 @@
 .container {
+    align-items: stretch;
+    background-color: rgba(0,0,0,0.00);
+    border: 0 solid black;
+    box-sizing: border-box;
     display: flex;
-    height: 100vh;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    flex-basis: auto;
     flex-direction: column;
+    flex-shrink: 0;
+    list-style: none;
+    margin: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    padding: 0px;
+    position: relative;
+    text-decoration: none;
+    z-index: 0;
 
-    .main {
-        display: flex;
-        height: 100%;
+    &.flex {
+        flex: 1;
+    }
+
+    &.events {
+        pointer-events: none!important;
+    }
+
+    .containerWrap {
+        min-height: 100dvh;
         width: 100%;
+        z-index: 0;
+        pointer-events: auto;
 
-        .logo, .auth {
-            position: relative;
-            display: flex;
-            flex: 1 1;
-            justify-content: center;
-            align-items: center;
-        }
+        .mainContainer {
+            flex-grow: 1;
+            flex-shrink: 1;
 
-        .auth {
-            min-width: 45vw;
-            .layout {
-                .title {
-                    margin-bottom: 48px;
-                    margin-top: 48px;
-                    font-size: 64px;
-                    font-family: "Verdana";
-                    font-weight: bold;
-                    line-height: 84px;
-                    word-wrap: break-word;
-                    letter-spacing: -1.2px;
-                }
+            .mainWrap {
+                flex: 1;
 
-                .subtitle {
-                    margin-bottom: 32px;
-                    font-size: 31px;
-                    font-family: "Verdana";
-                    font-weight: bold;
-                    word-wrap: break-word;
-                    letter-spacing: -1.2px;
-                }
+                .content {
+                    min-height: auto;
+                    flex-direction: row-reverse;
+                    flex: 1 1 auto;
 
-                .authForm {
-                    .googleAuth, .createAcc, .loginLink {
-                        display: flex;
-                        flex-direction: row;
+                    .auth {
+                        padding: 16px;
+                        min-width: 45vw;
                         justify-content: center;
-                        align-items: center;
-                        height: 40px;
-                        min-height: 36px;
-                        width: 300px;
-                        max-width: 380px;
-                        background-color: rgb(51, 54, 57);
-                        padding-left: 16px;
-                        padding-right: 16px;
-                        border: 1px solid rgb(207, 217, 222);
-                        background-color: rgb(255, 255, 255);
-                        border-radius: 9999px;
-                        line-height: 20px;
-                        text-align: center;
-                        font-weight: 700;
-                        font-size: 15px;
-                        cursor: pointer;
-                        transition-duration: 0.2s;
-                        box-sizing: border-box;
+
+                        .layout {
+                            max-width: 760px;
+                            min-width: 437px;
+                            padding: 20px;
+                            width: 100%;
+
+                            .title {
+                                margin-bottom: 48px;
+                                margin-top: 48px;
+                                min-width: 0px;
+                                font-family: "Verdana";
+                                font-size: 64px;
+                                font-weight: 700;
+                                line-height: 84px;
+                                letter-spacing: -1.2px;
+                                word-wrap: break-word;
+
+                                span {
+                                    text-overflow: unset;
+                                    word-wrap: break-word;
+                                    font-family: inherit;
+                                    min-width: 0px;
+                                }
+                            }
+
+                            .subtitle {
+                                margin-bottom: 32px;
+                                min-width: 0px;
+                                font-family: "Verdana";
+                                font-size: 31px;
+                                font-weight: 700;
+                                line-height: 36px;
+                            }
+
+                            .authForm {
+                                .button {
+                                    margin-bottom: 8px;
+                                    padding-left: 16px;
+                                    padding-right: 16px;
+                                    width: 300px;
+                                    height: 40px;
+                                    max-width: 380px;
+                                    min-height: 36px;
+                                    min-width: 36px;
+                                    flex: 0 0 auto;
+                                    border: 1px solid rgb(207, 217, 222);
+                                    border-radius: 9999px;
+                                    background-color: rgb(255, 255, 255);
+                                    outline-style: none;
+                                    transition-duration: 0.2s;
+                                    cursor: pointer;
+
+                                    .buttonContent {
+                                        display: flex;
+                                        flex-grow: 1;
+                                        flex-direction: row;
+                                        justify-content: center;
+                                        align-items: center;
+                                        min-width: 0px;
+                                        color: rgb(15, 20, 25);
+                                        font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                                        font-size: 15px;
+                                        font-weight: 700;
+                                        line-height: 20px;
+                                        text-align: center;
+                                        text-overflow: unset;
+                                        word-wrap: break-word;
+
+                                        .gmail-icon {
+                                            display: inline-block;
+                                            margin-right: 4px;
+                                            position: relative;
+                                            vertical-align: text-bottom;
+                                            width: 20px;
+                                            height: 20px;
+                                            max-width: 100%;
+                                            color: rgb(15, 20, 25);
+                                        }
+                                        span {
+                                            max-width: 100%;
+                                            min-width: 0px;
+                                            font-family: inherit;
+                                            font-size: 15px;
+                                            line-height: 20px;
+                                            text-overflow: unset;
+                                            word-wrap: break-word;
+                                            white-space: nowrap;
+                                            overflow-x: hidden;
+                                            overflow-y: hidden;
+                                        }
+                                    }
+                                }
+
+                                .createAccount {
+                                    border-color: rgba(0, 0, 0, 0);
+                                    background-color: rgb(29, 155, 240);
+
+                                    .buttonContent {
+                                        text-overflow: unset;
+                                        color: rgb(255, 255, 255);
+                                    }
+                                }
+
+                                .loginLink {
+                                    .buttonContent {
+                                        text-overflow: unset;
+                                        color: rgb(29, 155, 240);
+                                    }
+                                }
+
+                                .divider {
+                                    margin-bottom: 4px;
+                                    margin-top: 4px;
+                                    max-width: 380px;
+                                    width: 300px;
+
+                                    .dividerWrap {
+                                        flex-direction: row;
+                                        margin: 4px -4px;
+
+                                        .leftLine, .rightLine {
+                                            flex: 1;
+                                            flex-basis: 0px;
+                                            justify-content: center;
+                                            margin-left: 4px;
+                                            margin-right: 4px;
+                                            min-width: 0px;
+
+                                            .line {
+                                                height: 1px;
+                                                background-color: rgba(239,243,244,1.00);
+                                            }
+                                        }
+
+                                        .center {
+                                            flex-basis: auto;
+                                            min-width: 0px;
+                                            margin-left: 4px;
+                                            margin-right: 4px;
+
+                                            .text {
+                                                min-width: 0px;
+                                                color: rgb(15, 20, 25);
+                                                font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                                                font-size: 15px;
+                                                font-weight: 400;
+                                                line-height: 20px;
+                                                text-overflow: unset;
+                                                word-wrap: break-word;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .agreement {
+                                    display: inline;
+                                    flex: 1;
+                                    margin-bottom: 20px;
+                                    width: 300px;
+                                    max-width: 380px;
+                                    min-width: 0px;
+                                    color: rgb(83, 100, 113);
+                                    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                                    font-size: 11px;
+                                    font-weight: 400;
+                                    word-wrap: break-word;
+                                    text-overflow: unset;
+                                    line-height: 12px;
+
+                                    .text {
+                                        display: inline;
+                                        min-width: 0px;
+                                        text-overflow: unset;
+                                        color: rgb(29, 155, 240);
+                                        font-family: inherit;
+                                        word-wrap: break-word;
+                                    }
+
+                                    a {
+                                        cursor: pointer;
+                                    }
+                                }
+
+                                .loginForm {
+                                    margin-top: 40px;
+
+                                    .text {
+                                        flex: 1;
+                                        display: inline;
+                                        margin-bottom: 20px;
+                                        max-width: 380px;
+                                        min-width: 0px;
+                                        color: rgb(15, 20, 25);
+                                        font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                                        font-size: 17px;
+                                        font-weight: 700;
+                                        line-height: 20px;
+                                        word-wrap: break-word;
+                                        text-overflow: unset;
+                                    }
+                                }
+                            }
+                        }
                     }
 
-                    .divider {
-                        display: flex;
-                        align-items: center;
-                        max-width: 380px;
-                        width: 300px;
-                        margin-bottom: 8px;
-                        margin-top: 8px;
+                    .logo {
+                        flex: 1;
+                        justify-content: center;
+                        padding: 0px;
+                        min-height: 45vh;
+                        overflow-x: hidden;
+                        overflow-y: hidden;
 
-                        .left-line, .right-line {
+                        .logoWrap {
                             flex: 1;
-                            height: 1px;
-                            background-color: rgba(239, 243, 244, 1.00);
+                            justify-content: center;
+                            position: absolute;
+                            right: 0px;
+                            top: 0px;
+                            bottom: 0px;
+                            left: 0px;
+
+                            svg {
+                                display: inline-block;
+                                position: relative;
+                                justify-content: center;
+                                padding: 32px;
+                                max-width: 100%;
+                                max-height: 380px;
+                                height: 50%;
+                                vertical-align: text-bottom;
+                                color: rgba(15,20,25,1.00);
+                            }
                         }
-
-                        .center-text {
-                            margin: 0 8px; /* Adjust margin as needed */
-                        }
-                    }
-
-                    .createAcc {
-                        background-color: rgb(29, 155, 240);
-                        color: #FFF;
-                    }
-
-                    .login {
-                        margin-top: 40px;
-                        display: flex;
-                        flex-direction: column;
-
-                        span {
-                            background-color: rgba(0,0,0,0.00);
-                            border: 0 solid black;
-                            box-sizing: border-box;
-                            color: rgba(0,0,0,1.00);
-                            display: inline;
-                            font: 17px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-                            font-weight: 700;
-                        }
-
-                        .loginLink {
-                            color: rgb(29, 155, 240);
-                        }
-                    }
-
-                    .login > div {
-                        margin-bottom: 20px;
                     }
                 }
-            }
-        }
-
-        .logo {
-            svg {
-                max-height: 380px;
             }
         }
     }

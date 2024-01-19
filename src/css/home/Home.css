@@ -1,113 +1,257 @@
 .container {
-  display: flex;
-  height: 100vh;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  flex-direction: column;
-}
-.container .main {
-  display: flex;
-  height: 100%;
-  width: 100%;
-}
-.container .main .logo,
-.container .main .auth {
-  position: relative;
-  display: flex;
-  flex: 1 1;
-  justify-content: center;
-  align-items: center;
-}
-.container .main .auth {
-  min-width: 45vw;
-}
-.container .main .auth .layout .title {
-  margin-bottom: 48px;
-  margin-top: 48px;
-  font-size: 64px;
-  font-family: "Verdana";
-  font-weight: bold;
-  line-height: 84px;
-  word-wrap: break-word;
-  letter-spacing: -1.2px;
-}
-.container .main .auth .layout .subtitle {
-  margin-bottom: 32px;
-  font-size: 31px;
-  font-family: "Verdana";
-  font-weight: bold;
-  word-wrap: break-word;
-  letter-spacing: -1.2px;
-}
-.container .main .auth .layout .authForm .googleAuth,
-.container .main .auth .layout .authForm .createAcc,
-.container .main .auth .layout .authForm .loginLink {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  min-height: 36px;
-  width: 300px;
-  max-width: 380px;
-  background-color: #333639;
-  padding-left: 16px;
-  padding-right: 16px;
-  border: 1px solid #cfd9de;
-  background-color: #ffffff;
-  border-radius: 9999px;
-  line-height: 20px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  transition-duration: 0.2s;
-  box-sizing: border-box;
-}
-.container .main .auth .layout .authForm .divider {
-  display: flex;
-  align-items: center;
-  max-width: 380px;
-  width: 300px;
-  margin-bottom: 8px;
-  margin-top: 8px;
-}
-.container .main .auth .layout .authForm .divider .left-line,
-.container .main .auth .layout .authForm .divider .right-line {
-  flex: 1;
-  height: 1px;
-  background-color: #eff3f4;
-}
-.container .main .auth .layout .authForm .divider .center-text {
-  margin: 0 8px;
-  /* Adjust margin as needed */
-}
-.container .main .auth .layout .authForm .createAcc {
-  background-color: #1d9bf0;
-  color: #FFF;
-}
-.container .main .auth .layout .authForm .login {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-}
-.container .main .auth .layout .authForm .login span {
+  align-items: stretch;
   background-color: rgba(0, 0, 0, 0);
   border: 0 solid black;
   box-sizing: border-box;
-  color: #000000;
-  display: inline;
-  font: 17px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 700;
+  display: flex;
+  flex-basis: auto;
+  flex-direction: column;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0px;
+  min-height: 0px;
+  min-width: 0px;
+  padding: 0px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
 }
-.container .main .auth .layout .authForm .login .loginLink {
+.container.flex {
+  flex: 1;
+}
+.container.events {
+  pointer-events: none!important;
+}
+.container .containerWrap {
+  min-height: 100dvh;
+  width: 100%;
+  z-index: 0;
+  pointer-events: auto;
+}
+.container .containerWrap .mainContainer {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.container .containerWrap .mainContainer .mainWrap {
+  flex: 1;
+}
+.container .containerWrap .mainContainer .mainWrap .content {
+  min-height: auto;
+  flex-direction: row-reverse;
+  flex: 1 1 auto;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth {
+  padding: 16px;
+  min-width: 45vw;
+  justify-content: center;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout {
+  max-width: 760px;
+  min-width: 437px;
+  padding: 20px;
+  width: 100%;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .title {
+  margin-bottom: 48px;
+  margin-top: 48px;
+  min-width: 0px;
+  font-family: "Verdana";
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 84px;
+  letter-spacing: -1.2px;
+  word-wrap: break-word;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .title span {
+  text-overflow: unset;
+  word-wrap: break-word;
+  font-family: inherit;
+  min-width: 0px;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .subtitle {
+  margin-bottom: 32px;
+  min-width: 0px;
+  font-family: "Verdana";
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 36px;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .button {
+  margin-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 300px;
+  height: 40px;
+  max-width: 380px;
+  min-height: 36px;
+  min-width: 36px;
+  flex: 0 0 auto;
+  border: 1px solid #cfd9de;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  outline-style: none;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .button .buttonContent {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 0px;
+  color: #0f1419;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  text-overflow: unset;
+  word-wrap: break-word;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .button .buttonContent .gmail-icon {
+  display: inline-block;
+  margin-right: 4px;
+  position: relative;
+  vertical-align: text-bottom;
+  width: 20px;
+  height: 20px;
+  max-width: 100%;
+  color: #0f1419;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .button .buttonContent span {
+  max-width: 100%;
+  min-width: 0px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 20px;
+  text-overflow: unset;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .createAccount {
+  border-color: rgba(0, 0, 0, 0);
+  background-color: #1d9bf0;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .createAccount .buttonContent {
+  text-overflow: unset;
+  color: #ffffff;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .loginLink .buttonContent {
+  text-overflow: unset;
   color: #1d9bf0;
 }
-.container .main .auth .layout .authForm .login > div {
-  margin-bottom: 20px;
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider {
+  margin-bottom: 4px;
+  margin-top: 4px;
+  max-width: 380px;
+  width: 300px;
 }
-.container .main .logo svg {
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap {
+  flex-direction: row;
+  margin: 4px -4px;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .leftLine,
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .rightLine {
+  flex: 1;
+  flex-basis: 0px;
+  justify-content: center;
+  margin-left: 4px;
+  margin-right: 4px;
+  min-width: 0px;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .leftLine .line,
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .rightLine .line {
+  height: 1px;
+  background-color: #eff3f4;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .center {
+  flex-basis: auto;
+  min-width: 0px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .center .text {
+  min-width: 0px;
+  color: #0f1419;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  text-overflow: unset;
+  word-wrap: break-word;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .agreement {
+  display: inline;
+  flex: 1;
+  margin-bottom: 20px;
+  width: 300px;
+  max-width: 380px;
+  min-width: 0px;
+  color: #536471;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  word-wrap: break-word;
+  text-overflow: unset;
+  line-height: 12px;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .agreement .text {
+  display: inline;
+  min-width: 0px;
+  text-overflow: unset;
+  color: #1d9bf0;
+  font-family: inherit;
+  word-wrap: break-word;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .agreement a {
+  cursor: pointer;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .loginForm {
+  margin-top: 40px;
+}
+.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .loginForm .text {
+  flex: 1;
+  display: inline;
+  margin-bottom: 20px;
+  max-width: 380px;
+  min-width: 0px;
+  color: #0f1419;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 20px;
+  word-wrap: break-word;
+  text-overflow: unset;
+}
+.container .containerWrap .mainContainer .mainWrap .content .logo {
+  flex: 1;
+  justify-content: center;
+  padding: 0px;
+  min-height: 45vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.container .containerWrap .mainContainer .mainWrap .content .logo .logoWrap {
+  flex: 1;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.container .containerWrap .mainContainer .mainWrap .content .logo .logoWrap svg {
+  display: inline-block;
+  position: relative;
+  justify-content: center;
+  padding: 32px;
+  max-width: 100%;
   max-height: 380px;
+  height: 50%;
+  vertical-align: text-bottom;
+  color: #0f1419;
 }
 /*# sourceMappingURL=Home.css.map */
