@@ -66,9 +66,13 @@
   margin-left: calc(-8px);
   background-color: rgba(0, 0, 0, 0);
   border-color: rgba(0, 0, 0, 0);
+  border-radius: 9999px;
   outline-style: none;
   transition-duration: 0.2s;
   cursor: pointer;
+}
+.group .modal .modalContent .alignContent .header .headerWrap .closeContainer .closeWrap:hover {
+  background-color: rgba(15, 20, 25, 0.1);
 }
 .group .modal .modalContent .alignContent .header .headerWrap .closeContainer .closeWrap .close {
   flex-grow: 1;
@@ -263,37 +267,87 @@
   appearance: none;
   outline-style: none;
 }
-.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .hidden,
-.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .hidden {
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .assertive,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .assertive {
   flex-direction: row;
   padding-left: 8px;
   padding-right: 8px;
 }
-.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .hidden .box,
-.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .hidden .box {
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .assertive .box,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .assertive .box {
   flex: 1;
   flex-direction: column;
   padding-right: 20px;
   padding-top: 2px;
 }
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .assertive .box .hidden,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .assertive .box .hidden {
+  display: none;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .assertive .box .assertiveContent,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .assertive .box .assertiveContent {
+  align-self: flex-start;
+  min-width: 0px;
+  font-size: 13px;
+  color: #f4212e;
+  font-weight: 400;
+  line-height: 16px;
+  text-overflow: unset;
+  word-wrap: break-word;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .assertive .box .assertiveContent span,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .assertive .box .assertiveContent span {
+  min-width: 0px;
+  color: inherit;
+  font-family: inherit;
+  text-overflow: unset;
+  word-wrap: break-word;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel .textWrap.focused,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel .textWrap.focused,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .emptyNameLabel .textWrap.focused,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .emptyNameLabel .textWrap.focused {
+  padding: 8px 8px 0px 8px !important;
+  line-height: normal !important;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel .textWrap.focused span,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel .textWrap.focused span,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .emptyNameLabel .textWrap.focused span,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .emptyNameLabel .textWrap.focused span {
+  vertical-align: top;
+  font-size: small;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel .polite,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel .polite,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .emptyNameLabel .polite,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .emptyNameLabel .polite {
+  display: flex !important;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .filled .textWrap,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .filled .textWrap {
+  padding: 8px 8px 0px 8px !important;
+  line-height: normal !important;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .filled .textWrap span,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .filled .textWrap span {
+  vertical-align: top;
+  font-size: small;
+}
 .group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel,
 .group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel {
   border: 2px solid #1d9bf0;
 }
-.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel .textWrap,
-.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel .textWrap {
-  padding: 8px 8px 0px 8px !important;
-  line-height: normal !important;
-}
 .group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel .textWrap span,
 .group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel .textWrap span {
-  vertical-align: top;
-  font-size: small;
   color: #1d9bf0 !important;
 }
-.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .activeNameLabel .polite,
-.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .activeNameLabel .polite {
-  display: flex !important;
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .emptyNameLabel,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .emptyNameLabel {
+  border: 2px solid #f4212e;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .emptyNameLabel .textWrap.focused span,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .emptyNameLabel .textWrap.focused span {
+  color: #f4212e !important;
 }
 .group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm {
   margin-top: 20px;

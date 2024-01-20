@@ -1,16 +1,35 @@
 import React, { useState } from "react";
 import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css";
-import { RiCloseLine } from "react-icons/ri";
 import { generateOptions } from '../utils/utils'
+import Tooltip from "../utils/tooltip/Tooltip";
 
 const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
     const [step, setStep] = useState(1)
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [isNameLabelActive, setIsNameLabelActive] = useState(false)
-    const handleInputChange = (inputName, event) => {
-        setUsername(event.target.value)
+    const [emptyInput, setEmptyInput] = useState(false)
+    const [focused, setFocused] = useState(false)
+
+    const onFocus = () => {
+        setFocused(true)
+    }
+    const onBlur = () => setFocused(false)
+    const handleInputChange = (event, inputName) => {
+        if (inputName === 'username') {
+            let value = event.target.value
+            if (value.length <= 50) {
+                if (username.length > 0 && value.length === 0) {
+                    setEmptyInput(true)
+                    setIsNameLabelActive(false)
+                } else {
+                    setEmptyInput(false)
+                    setIsNameLabelActive(true)
+                }
+                setUsername(value)
+            }
+        }
     }
     const handleInputClick = (inputName) => {
         setIsNameLabelActive(true)
@@ -58,15 +77,17 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                     <div className="container">
                                         <div className="headerWrap container">
                                             <div className="closeContainer container">
-                                                <div className="closeWrap container" onClick={() => setIsCreateUserOpen(false)}>
-                                                    <div className="close container">
-                                                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                                                            <g>
-                                                                <path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
-                                                            </g>
-                                                        </svg>
+                                                <Tooltip text="Close">
+                                                    <div className="closeWrap container" onClick={() => setIsCreateUserOpen(false)}>
+                                                        <div className="close container">
+                                                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                                                <g>
+                                                                    <path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </Tooltip>
                                             </div>
                                             <div className="titleContainer container">
                                                 <div className="titleWrap container">
@@ -87,15 +108,15 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                         </div>
                                         <div className="container" onSubmit={event => handleSubmit(event)}>
                                             <div className="nameBox container">
-                                                <label className={`container ${isNameLabelActive ? 'activeNameLabel' : ''}`}>
+                                                <label className={`container ${isNameLabelActive ? 'activeNameLabel' : ''} ${emptyInput ? 'emptyNameLabel' : ''} ${username.length ? 'filled' : ''}`} onFocus={onFocus} onBlur={onBlur}>
                                                     <div className="inputWrap container">
                                                         <div className="userInput container">
-                                                            <div className="textWrap containeBlock">
+                                                            <div className={`textWrap containeBlock ${focused ? 'focused' : ''}`}>
                                                                 <span className="containerBlock">Name</span>
                                                             </div>
                                                             <div className="polite container">
                                                                 <div className="politeWrap container">
-                                                                    <span>0/50</span>
+                                                                    <span>{username.length}/50</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -106,15 +127,21 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                                         </div>
                                                     </div>
                                                 </label>
-                                                <div className="hidden container">
-                                                    <div className="box container"></div>
+                                                <div className="assertive container">
+                                                    <div className="box container">
+                                                        <div className={`container ${emptyInput ? '' : 'hidden'}`}>
+                                                            <div className="assertiveContent containerBlock">
+                                                                <span className="containerBlock">What’s your name?</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="loginBox container">
                                                 <label className="container">
                                                     <div className="inputWrap container">
                                                         <div className="userInput container">
-                                                            <div className="textWrap containeBlock">
+                                                            <div className="textWrap containerBlock">
                                                                 <span className="containerBlock">Email</span>
                                                             </div>
                                                         </div>

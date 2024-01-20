@@ -67,9 +67,14 @@
                                 margin-left: calc(-8px);
                                 background-color: rgba(0, 0, 0, 0);
                                 border-color: rgba(0, 0, 0, 0);
+                                border-radius: 9999px;
                                 outline-style: none;
                                 transition-duration: 0.2s;
                                 cursor: pointer;
+
+                                &:hover {
+                                    background-color: rgba(15, 20, 25, 0.1);
+                                }
 
                                 .close {
                                     flex-grow: 1;
@@ -278,7 +283,7 @@
                                     }
                                 }
 
-                                .hidden {
+                                .assertive {
                                     flex-direction: row;
                                     padding-left: 8px;
                                     padding-right: 8px;
@@ -288,6 +293,57 @@
                                         flex-direction: column;
                                         padding-right: 20px;
                                         padding-top: 2px;
+
+                                        .hidden {
+                                            display: none;
+                                        }
+
+                                        .assertiveContent {
+                                            align-self: flex-start;
+                                            min-width: 0px;
+                                            font-size: 13px;
+                                            color: rgb(244, 33, 46);
+                                            font-weight: 400;
+                                            line-height: 16px;
+                                            text-overflow: unset;
+                                            word-wrap: break-word;
+
+                                            span {
+                                                min-width: 0px;
+                                                color: inherit;
+                                                font-family: inherit;
+                                                text-overflow: unset;
+                                                word-wrap: break-word;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .activeNameLabel, .emptyNameLabel {
+                                    .textWrap {
+                                        &.focused {
+                                            padding: 8px 8px 0px 8px !important;
+                                            line-height: normal !important;
+                                            span {
+                                                vertical-align: top;
+                                                font-size: small;
+                                            }
+                                        }
+                                    }
+
+                                    .polite {
+                                        display: flex !important;
+                                    }
+                                }
+
+                                .filled {
+                                    .textWrap {
+                                        padding: 8px 8px 0px 8px !important;
+                                        line-height: normal !important;
+                                        span {
+                                            vertical-align: top;
+                                            font-size: small;
+                                        }
                                     }
                                 }
 
@@ -295,17 +351,21 @@
                                     border: 2px solid rgb(29, 155, 240);
 
                                     .textWrap {
-                                        padding: 8px 8px 0px 8px !important;
-                                        line-height: normal !important;
                                         span {
-                                            vertical-align: top;
-                                            font-size: small;
                                             color: rgb(29, 155, 240) !important;
                                         }
                                     }
+                                }
 
-                                    .polite {
-                                        display: flex !important;
+                                .emptyNameLabel {
+                                    border: 2px solid rgb(244, 33, 46);
+
+                                    .textWrap {
+                                        &.focused  {
+                                            span {
+                                                color: rgb(244, 33, 46) !important;
+                                            }
+                                        }
                                     }
                                 }
                             }
