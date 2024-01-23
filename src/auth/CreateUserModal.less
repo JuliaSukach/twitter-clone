@@ -319,7 +319,7 @@
                                     }
                                 }
 
-                                .activeNameLabel, .emptyNameLabel {
+                                .activeLabel, .emptyLabel, .invalidInput {
                                     .textWrap {
                                         &.focused {
                                             padding: 8px 8px 0px 8px !important;
@@ -333,6 +333,7 @@
 
                                     .polite {
                                         display: flex !important;
+                                        flex-direction: row;
                                     }
                                 }
 
@@ -347,8 +348,9 @@
                                     }
                                 }
 
-                                .activeNameLabel {
-                                    border: 2px solid rgb(29, 155, 240);
+                                .activeLabel {
+                                    border-color: rgb(29, 155, 240);
+                                    box-shadow: rgb(29, 155, 240) 0px 0px 0px 1px;
 
                                     .textWrap {
                                         span {
@@ -357,14 +359,23 @@
                                     }
                                 }
 
-                                .emptyNameLabel {
-                                    border: 2px solid rgb(244, 33, 46);
+                                .emptyLabel, .invalidInput {
+                                    border-color: rgb(244, 33, 46);
+                                    box-shadow: rgb(244, 33, 46) 0px 0px 0px 1px;
 
                                     .textWrap {
                                         &.focused  {
                                             span {
                                                 color: rgb(244, 33, 46) !important;
                                             }
+                                        }
+                                    }
+                                }
+
+                                .invalidInput {
+                                    .textWrap {
+                                        span {
+                                            color: rgb(244, 33, 46) !important;
                                         }
                                     }
                                 }
@@ -414,6 +425,7 @@
                                         border-color: rgb(207, 217, 222);
                                         border-radius: 4px;
                                         border-width: 1px;
+                                        color: rgb(83, 100, 113);
 
                                         label {
                                             position: absolute;
@@ -424,7 +436,7 @@
                                             font-size: 13px;
                                             font-weight: 400;
                                             text-overflow: unset;
-                                            color: rgb(83, 100, 113);
+                                            color: inherit;
                                             line-height: 16px;
                                             word-wrap: break-word;
                                             pointer-events: none!important;
@@ -467,6 +479,12 @@
                                             top: 50%;
                                             color: rgba(83,100,113,1.00);
                                             pointer-events: none!important;
+                                        }
+
+                                        &.activeSelect {
+                                            border-color: rgb(29, 155, 240);
+                                            box-shadow: rgb(29, 155, 240) 0px 0px 0px 1px;
+                                            color: rgb(29, 155, 240);
                                         }
                                     }
 
@@ -537,6 +555,11 @@
                                         overflow-x: hidden;
                                         overflow-y: hidden;
                                     }
+                                }
+
+                                &.active {
+                                    opacity: 1;
+                                    transition-duration: 0.2s;
                                 }
                             }
                         }

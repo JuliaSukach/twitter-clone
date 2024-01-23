@@ -1,68 +1,56 @@
 import React, { useState } from "react";
 import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css";
-import { generateOptions } from '../utils/utils'
 import Tooltip from "../utils/tooltip/Tooltip";
+import UserNameInput from "./UserNameInput";
+import EmailInput from "./EmailInput";
+import BirthdayForm from "./BirthdayForm";
 
 const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
-    const [step, setStep] = useState(1)
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [isNameLabelActive, setIsNameLabelActive] = useState(false)
-    const [emptyInput, setEmptyInput] = useState(false)
-    const [focused, setFocused] = useState(false)
+    const [userData, setUserData] = useState({
+        username: '',
+        email: '',
+        month: '',
+        day: '',
+        year: ''
+    })
+    const [isDataComplete, setIsDataComplete] = useState(false)
+    const [activeInputs, setActiveInputs] = useState({
+        username: false,
+        email: false,
+        month: false,
+        day: false,
+        year: false
+    })
 
-    const onFocus = () => {
-        setFocused(true)
+    const handleFocus = (field) => {
+        setActiveInputs((prev) => ({ ...Object.fromEntries(Object.keys(prev).map((key) => [key, key === field])), [field]: true }))
     }
-    const onBlur = () => setFocused(false)
-    const handleInputChange = (event, inputName) => {
-        if (inputName === 'username') {
-            let value = event.target.value
-            if (value.length <= 50) {
-                if (username.length > 0 && value.length === 0) {
-                    setEmptyInput(true)
-                    setIsNameLabelActive(false)
-                } else {
-                    setEmptyInput(false)
-                    setIsNameLabelActive(true)
-                }
-                setUsername(value)
-            }
-        }
+
+    const handleBlur = () => {
+        setActiveInputs({
+            username: false,
+            email: false,
+            month: false,
+            day: false,
+            year: false
+        })
     }
-    const handleInputClick = (inputName) => {
-        setIsNameLabelActive(true)
+
+    const handleChange = (field, value) => {
+        setUserData(prevData => ({
+            ...prevData,
+            [field]: value
+        }))
+
+        const allDataFilled = Object.values(userData).every((val) => val !== '')
+        setIsDataComplete(allDataFilled)
     }
-    const handleBtnClick = (event) => {
-        // setStep(step + 1)
-    }
+
+    const [step, setStep] = useState(1)
     const handleSubmit = (event) => {
         event.preventDefault()
-        let userData = {
-            username,
-            email,
-            birthday: `${selectedMonth}${selectedDay}, ${selectedYear}`
-        }
         signUpUser(userData)
-    }
-
-    const [months, setMonths] = useState(generateOptions(1, 12, 'month'))
-    const [days, setDays] = useState(generateOptions(1, 31, 'day'))
-    const [years, setYears] = useState(generateOptions(1900, 2024, 'year'))
-
-    const [selectedMonth, setSelectedMonth] = useState('')
-    const [selectedDay, setSelectedDay] = useState('')
-    const [selectedYear, setSelectedYear] = useState('')
-
-    const handleDateChange = (field, event) => {
-        if (field === 'month') {
-            setSelectedMonth(event.target.value)
-        } else if (field === 'day') {
-            setSelectedDay(event.target.value)
-        } else {
-            setSelectedYear(event.target.value)
-        }
     }
 
     return (
@@ -107,135 +95,40 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                             </div>
                                         </div>
                                         <div className="container" onSubmit={event => handleSubmit(event)}>
-                                            <div className="nameBox container">
-                                                <label className={`container ${isNameLabelActive ? 'activeNameLabel' : ''} ${emptyInput ? 'emptyNameLabel' : ''} ${username.length ? 'filled' : ''}`} onFocus={onFocus} onBlur={onBlur}>
-                                                    <div className="inputWrap container">
-                                                        <div className="userInput container">
-                                                            <div className={`textWrap containeBlock ${focused ? 'focused' : ''}`}>
-                                                                <span className="containerBlock">Name</span>
-                                                            </div>
-                                                            <div className="polite container">
-                                                                <div className="politeWrap container">
-                                                                    <span>{username.length}/50</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="inputBox container">
-                                                            <div className="wrap containerBlock">
-                                                                <input type="text" value={username} onClick={() => handleInputClick('username')} onChange={(event) => handleInputChange(event, 'username')}/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                                <div className="assertive container">
-                                                    <div className="box container">
-                                                        <div className={`container ${emptyInput ? '' : 'hidden'}`}>
-                                                            <div className="assertiveContent containerBlock">
-                                                                <span className="containerBlock">What’s your name?</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="loginBox container">
-                                                <label className="container">
-                                                    <div className="inputWrap container">
-                                                        <div className="userInput container">
-                                                            <div className="textWrap containerBlock">
-                                                                <span className="containerBlock">Email</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="inputBox container">
-                                                            <div className="wrap containerBlock">
-                                                            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                                <div className="hidden container">
-                                                    <div className="box container"></div>
-                                                </div>
-                                            </div>
-                                            <div className="birthdayForm container">
-                                                <div className="title containerBlock">
-                                                    <span className="containerBlock">Date of birth</span>
-                                                </div>
-                                                <div className="subtitle containerBlock">
-                                                    <span className="containerBlock">This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</span>
-                                                </div>
-                                                <div className="container">
-                                                    <div className="dataPicker container">
-                                                        <div className="month container dataBox">
-                                                            <label className="containerBlock">
-                                                                <span className="containerBlock">Month</span>
-                                                            </label>
-                                                            <select id="month" name="month" value={selectedMonth} onChange={event => handleDateChange('month', event)}>
-                                                                <option value="" disabled></option>
-                                                                {months.map((option) => (
-                                                                    <option key={option.value} value={option.value}>
-                                                                    {option.label}
-                                                                    </option>
-                                                                ))}
-                                                            </select>
-                                                            <svg viewBox="0 0 24 24">
-                                                                <g>
-                                                                    <path d="M3.543 8.96l1.414-1.42L12 14.59l7.043-7.05 1.414 1.42L12 17.41 3.543 8.96z"></path>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                        <div className="day container dataBox">
-                                                            <label className="containerBlock">
-                                                                <span className="containerBlock">Day</span>
-                                                            </label>
-                                                            <select id="day" name="day" value={selectedDay} onChange={event => handleDateChange('day', event)}>
-                                                                <option value="" disabled></option>
-                                                                {days.map((option) => (
-                                                                    <option key={option.value} value={option.value}>
-                                                                    {option.label}
-                                                                    </option>
-                                                                ))}
-                                                            </select>
-                                                            <svg viewBox="0 0 24 24">
-                                                                <g>
-                                                                    <path d="M3.543 8.96l1.414-1.42L12 14.59l7.043-7.05 1.414 1.42L12 17.41 3.543 8.96z"></path>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                        <div className="year container dataBox">
-                                                            <label className="containerBlock">
-                                                                <span className="containerBlock">Year</span>
-                                                            </label>
-                                                            <select id="year" name="year" value={selectedYear} onChange={event => handleDateChange('year', event)}>
-                                                                <option value="" disabled></option>
-                                                                {years.map((option) => (
-                                                                    <option key={option.value} value={option.value}>
-                                                                    {option.label}
-                                                                    </option>
-                                                                ))}
-                                                            </select>
-                                                            <svg viewBox="0 0 24 24">
-                                                                <g>
-                                                                    <path d="M3.543 8.96l1.414-1.42L12 14.59l7.043-7.05 1.414 1.42L12 17.41 3.543 8.96z"></path>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/* <div className='modalActions'>
-                                                <div className='actionsContainer' onClick={handleBtnClick}>
-                                                    <button className='submit'>
-                                                        Next
-                                                    </button>
-                                                </div>
-                                            </div> */}
+                                            <UserNameInput
+                                                field='username'
+                                                currValue={userData.username}
+                                                isActive={activeInputs.username}
+                                                handleChange={handleChange}
+                                                onFocus={() => handleFocus('username')}
+                                                onBlur={handleBlur}>
+                                            </UserNameInput>
+                                            <EmailInput
+                                                field='email'
+                                                currValue={userData.email}
+                                                isActive={activeInputs.email}
+                                                handleChange={handleChange}
+                                                onFocus={() => handleFocus('email')}
+                                                onBlur={handleBlur}>
+                                            </EmailInput>
+                                            <BirthdayForm
+                                                isMonthActive={activeInputs.month}
+                                                isDayActive={activeInputs.day}
+                                                isYearActive={activeInputs.year}
+                                                month={userData.month}
+                                                day={userData.day}
+                                                year={userData.year}
+                                                handleChange={handleChange}
+                                                onFocus={handleFocus}
+                                                onBlur={handleBlur}
+                                            ></BirthdayForm>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="nextContainer container">
                                     <div className="container">
                                         <div className="nextWrap container">
-                                            <div className="nextBox container">
+                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''}`}>
                                                 <div className="nextContent containerBlock">
                                                     <span className="containerBlock">Next</span>
                                                 </div>
