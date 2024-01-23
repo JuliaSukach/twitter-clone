@@ -1,149 +1,140 @@
 import React, { useState } from "react";
+import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css";
-import { RiCloseLine } from "react-icons/ri";
-import { generateOptions } from '../utils/utils'
+import Tooltip from "../utils/tooltip/Tooltip";
+import UserNameInput from "./UserNameInput";
+import EmailInput from "./EmailInput";
+import BirthdayForm from "./BirthdayForm";
 
 const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
-    const [step, setStep] = useState(1)
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const handleBtnClick = (event) => {
-        // setStep(step + 1)
+    const [userData, setUserData] = useState({
+        username: '',
+        email: '',
+        month: '',
+        day: '',
+        year: ''
+    })
+    const [isDataComplete, setIsDataComplete] = useState(false)
+    const [activeInputs, setActiveInputs] = useState({
+        username: false,
+        email: false,
+        month: false,
+        day: false,
+        year: false
+    })
+
+    const handleFocus = (field) => {
+        setActiveInputs((prev) => ({ ...Object.fromEntries(Object.keys(prev).map((key) => [key, key === field])), [field]: true }))
     }
+
+    const handleBlur = () => {
+        setActiveInputs({
+            username: false,
+            email: false,
+            month: false,
+            day: false,
+            year: false
+        })
+    }
+
+    const handleChange = (field, value) => {
+        setUserData(prevData => ({
+            ...prevData,
+            [field]: value
+        }))
+
+        const allDataFilled = Object.values(userData).every((val) => val !== '')
+        setIsDataComplete(allDataFilled)
+    }
+
+    const [step, setStep] = useState(1)
     const handleSubmit = (event) => {
         event.preventDefault()
-        let userData = {
-            username,
-            email,
-            birthday: `${selectedMonth}${selectedDay}, ${selectedYear}`
-        }
         signUpUser(userData)
     }
 
-    const [months, setMonths] = useState(generateOptions(1, 12, 'month'))
-    const [days, setDays] = useState(generateOptions(1, 31, 'day'))
-    const [years, setYears] = useState(generateOptions(1900, 2024, 'year'))
-
-    const [selectedMonth, setSelectedMonth] = useState('')
-    const [selectedDay, setSelectedDay] = useState('')
-    const [selectedYear, setSelectedYear] = useState('')
-
-    const handleDateChange = (field, event) => {
-        if (field === 'month') {
-            setSelectedMonth(event.target.value)
-        } else if (field === 'day') {
-            setSelectedDay(event.target.value)
-        } else {
-            setSelectedYear(event.target.value)
-        }
-    }
-
     return (
-        <div className="group">
-            <div className="modal">
-                <div className="darkBG">
-                    <div className='centered'>
-                        <div className='modal'>
-                            <div className='modalHeader'>
-                                <button className='closeBtn' onClick={() => setIsCreateUserOpen(false)}>
-                                    <RiCloseLine />
-                                </button>
-                                <h5 className='step'>Step {step} of 5</h5>
-                            </div>
-                            <div className='modalContent'>
-                                <div className="wrapper">
-                                    <div className="header">
-                                        <h1>Create your account</h1>
+        <div className="group container">
+            <div className="bgContainer container"></div>
+            <div className="modal container">
+                <div className="modalContent container">
+                    <div className='alignContent container'>
+                        <div className='modalContent container'>
+                            <div className='container'>
+                                <div className="header container">
+                                    <div className="container">
+                                        <div className="headerWrap container">
+                                            <div className="closeContainer container">
+                                                <Tooltip text="Close">
+                                                    <div className="closeWrap container" onClick={() => setIsCreateUserOpen(false)}>
+                                                        <div className="close container">
+                                                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                                                <g>
+                                                                    <path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </Tooltip>
+                                            </div>
+                                            <div className="titleContainer container">
+                                                <div className="titleWrap container">
+                                                    <h2><span>Step {step} of 5</span></h2>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <form className="userInfo" onSubmit={event => handleSubmit(event)}>
-                                        <div className="name">
-                                            <label>
-                                                <div className="inputWrap">
-                                                    <span>Name</span>
-                                                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div className="login">
-                                            <label>
-                                                <div className="inputWrap">
-                                                    <span>Email</span>
-                                                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div className="birthdayForm">
-                                            <div className="title">
-                                                <span>Date of birth</span>
+                                </div>
+                            </div>
+                            <div className='accountInfo container'>
+                                <div className="wrapper container">
+                                    <div className="accountContent container">
+                                        <div className="container">
+                                            <div className="infoHeader container">
+                                                <h1 className="containerBlock"><span className="containerBlock">Create your account</span></h1>
                                             </div>
-                                            <div className="subtitle">
-                                                <span>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</span>
-                                            </div>
-                                            <div className="datePicker">
-                                                <div className="month">
-                                                    <label>
-                                                        <span>Month</span>
-                                                    </label>
-                                                    <select id="month" name="month" value={selectedMonth} onChange={event => handleDateChange('month', event)}>
-                                                        <option value="" disabled></option>
-                                                        {months.map((option) => (
-                                                            <option key={option.value} value={option.value}>
-                                                            {option.label}
-                                                            </option>
-                                                        ))}
-                                                    </select>
-                                                    <svg viewBox="0 0 24 24">
-                                                        <g>
-                                                            <path d="M3.543 8.96l1.414-1.42L12 14.59l7.043-7.05 1.414 1.42L12 17.41 3.543 8.96z"></path>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                                <div className="day">
-                                                    <label>
-                                                        <span>Day</span>
-                                                    </label>
-                                                    <select id="day" name="day" value={selectedDay} onChange={event => handleDateChange('day', event)}>
-                                                        <option value="" disabled></option>
-                                                        {days.map((option) => (
-                                                            <option key={option.value} value={option.value}>
-                                                            {option.label}
-                                                            </option>
-                                                        ))}
-                                                    </select>
-                                                    <svg viewBox="0 0 24 24">
-                                                        <g>
-                                                            <path d="M3.543 8.96l1.414-1.42L12 14.59l7.043-7.05 1.414 1.42L12 17.41 3.543 8.96z"></path>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                                <div className="year">
-                                                    <label>
-                                                        <span>Year</span>
-                                                    </label>
-                                                    <select id="year" name="year" value={selectedYear} onChange={event => handleDateChange('year', event)}>
-                                                        <option value="" disabled></option>
-                                                        {years.map((option) => (
-                                                            <option key={option.value} value={option.value}>
-                                                            {option.label}
-                                                            </option>
-                                                        ))}
-                                                    </select>
-                                                    <svg viewBox="0 0 24 24">
-                                                        <g>
-                                                            <path d="M3.543 8.96l1.414-1.42L12 14.59l7.043-7.05 1.414 1.42L12 17.41 3.543 8.96z"></path>
-                                                        </g>
-                                                    </svg>
+                                        </div>
+                                        <div className="container" onSubmit={event => handleSubmit(event)}>
+                                            <UserNameInput
+                                                field='username'
+                                                currValue={userData.username}
+                                                isActive={activeInputs.username}
+                                                handleChange={handleChange}
+                                                onFocus={() => handleFocus('username')}
+                                                onBlur={handleBlur}>
+                                            </UserNameInput>
+                                            <EmailInput
+                                                field='email'
+                                                currValue={userData.email}
+                                                isActive={activeInputs.email}
+                                                handleChange={handleChange}
+                                                onFocus={() => handleFocus('email')}
+                                                onBlur={handleBlur}>
+                                            </EmailInput>
+                                            <BirthdayForm
+                                                isMonthActive={activeInputs.month}
+                                                isDayActive={activeInputs.day}
+                                                isYearActive={activeInputs.year}
+                                                month={userData.month}
+                                                day={userData.day}
+                                                year={userData.year}
+                                                handleChange={handleChange}
+                                                onFocus={handleFocus}
+                                                onBlur={handleBlur}
+                                            ></BirthdayForm>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="nextContainer container">
+                                    <div className="container">
+                                        <div className="nextWrap container">
+                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''}`}>
+                                                <div className="nextContent containerBlock">
+                                                    <span className="containerBlock">Next</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='modalActions'>
-                                            <div className='actionsContainer' onClick={handleBtnClick/*signUpUser*/}>
-                                                <button className='submit'>
-                                                    Next
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
