@@ -28,10 +28,8 @@ export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 export const signUpWithEmail = async (email, password, username) => {
     try {
-        debugger
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
         sendEmailVerification(userCredential.user)
-        debugger
         updateProfile(auth.currentUser, {
             displayName: username
         })
@@ -43,9 +41,7 @@ export const signUpWithEmail = async (email, password, username) => {
 
 export const signInExistingUser = async (email, password) => {
     try {
-        debugger
         const userCredential = signInWithEmailAndPassword(auth, email, password)
-        debugger
         return userCredential
     } catch (error) {
         console.error('Error signing up:', error.message);

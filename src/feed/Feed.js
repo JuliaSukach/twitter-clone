@@ -8,12 +8,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/firebase'; // Replace with your actual Firebase config import
 
 function Feed() {
-    debugger
     const [user] = useAuthState(auth)
     const [posts, setPosts] = useState([])
     const fetchPost = async() => {
         try {
-            debugger
             const querySnapshot = await getDocs(
                 query(collection(db, 'posts'), where('displayName', '==', user.displayName))
             )
