@@ -38,13 +38,16 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
     }
 
     const handleChange = (field, value) => {
-        setUserData(prevData => ({
-            ...prevData,
-            [field]: value
-        }))
+        setUserData(prevData => {
+            const updatedData = {
+                ...prevData,
+                [field]: value
+            }
 
-        const allDataFilled = Object.values(userData).every((val) => val !== '')
-        setIsDataComplete(allDataFilled)
+            const allDataFilled = Object.values(updatedData).every((val) => val !== '')
+            setIsDataComplete(allDataFilled)
+            return updatedData
+        })
     }
 
     const [step, setStep] = useState(1)
@@ -128,7 +131,7 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                 <div className="nextContainer container">
                                     <div className="container">
                                         <div className="nextWrap container">
-                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''}`}>
+                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''}`} onClick={() => setStep(step + 1)}>
                                                 <div className="nextContent containerBlock">
                                                     <span className="containerBlock">Next</span>
                                                 </div>
