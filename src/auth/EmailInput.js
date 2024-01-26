@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-const EmailInput = ({ isActive, onFocus, onBlur, handleChange, field, currValue }) => {
-    const [isValid, setIsValid] = useState(true)
-
+const EmailInput = ({ isActive, onFocus, onBlur, handleChange, field, currValue, setIsValid, isValid }) => {
     const handleInputChange = (event) => {
         let value = event.target.value
         handleChange(field, value)

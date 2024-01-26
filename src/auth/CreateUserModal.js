@@ -45,13 +45,15 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                 [field]: value
             }
 
-            const allDataFilled = Object.values(updatedData).every((val) => val !== '')
+            let allDataFilled = Object.values(updatedData).every((val) => val !== '')
+            allDataFilled = !isValid ? false : allDataFilled
             setIsDataComplete(allDataFilled)
             return updatedData
         })
     }
 
     const [step, setStep] = useState(1)
+    const [isValid, setIsValid] = useState(true)
     const handleSubmit = (event) => {
         event.preventDefault()
         signUpUser(userData)
@@ -74,6 +76,8 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
             field='email'
             currValue={userData.email}
             isActive={activeInputs.email}
+            isValid={isValid}
+            setIsValid={setIsValid}
             handleChange={handleChange}
             onFocus={() => handleFocus('email')}
             onBlur={handleBlur}>
@@ -159,6 +163,16 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                 </div>
                                 <div className="nextContainer container">
                                     <div className="container">
+                                        <div className={`agreement containerBlock ${step === 1 ? 'hidden' : ''}`}>
+                                            <span className="containerBlock">By signing up, you agree to our </span>
+                                            <a className="containerBlock" href="https://twitter.com/en/tos#new">Terms</a>
+                                            <span className="containerBlock">, </span>
+                                            <a className="containerBlock" href="https://twitter.com/en/privacy">Privacy Policy</a>
+                                            <span className="containerBlock">, and </span>
+                                            <a className="containerBlock" href="https://help.twitter.com/en/rules-and-policies/x-cookies">Cookie Use</a>
+                                            <span className="containerBlock">. X may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy. </span>
+                                            <a className="containerBlock" href="https://twitter.com/en/privacy">Learn more</a>
+                                        </div>
                                         <div className="nextWrap container">
                                             <div className={`nextBox container ${isDataComplete ? 'active' : ''} ${step > 1 ? 'complited' : ''}`} onClick={() => handleNext(step + 1)}>
                                                 <div className="nextContent containerBlock">
