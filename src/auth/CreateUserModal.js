@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css";
 import Tooltip from "../utils/tooltip/Tooltip";
 import UserNameInput from "./UserNameInput";
 import EmailInput from "./EmailInput";
+import BirthdayInput from "./BirthdayInput";
 import BirthdayForm from "./BirthdayForm";
 
 const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
@@ -56,6 +57,48 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
         signUpUser(userData)
     }
 
+    const handleNext = (value) => {
+        setStep(value)
+    }
+
+    const usernameComponent = <UserNameInput
+            field='username'
+            currValue={userData.username}
+            isActive={activeInputs.username}
+            handleChange={handleChange}
+            onFocus={() => handleFocus('username')}
+            onBlur={handleBlur}>
+        </UserNameInput>
+
+    const emailComponent = <EmailInput
+            field='email'
+            currValue={userData.email}
+            isActive={activeInputs.email}
+            handleChange={handleChange}
+            onFocus={() => handleFocus('email')}
+            onBlur={handleBlur}>
+        </EmailInput>
+
+    const birthdaySelectComponent = <BirthdayForm
+            isMonthActive={activeInputs.month}
+            isDayActive={activeInputs.day}
+            isYearActive={activeInputs.year}
+            month={userData.month}
+            day={userData.day}
+            year={userData.year}
+            handleChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+        ></BirthdayForm>
+
+    const birthdayComponent = <BirthdayInput
+            field='birthday'
+            currValue={`${userData.month} ${userData.day}, ${userData.year}`}
+            handleChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+        ></BirthdayInput>
+
     return (
         <div className="group container">
             <div className="bgContainer container"></div>
@@ -98,42 +141,28 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                             </div>
                                         </div>
                                         <div className="container" onSubmit={event => handleSubmit(event)}>
-                                            <UserNameInput
-                                                field='username'
-                                                currValue={userData.username}
-                                                isActive={activeInputs.username}
-                                                handleChange={handleChange}
-                                                onFocus={() => handleFocus('username')}
-                                                onBlur={handleBlur}>
-                                            </UserNameInput>
-                                            <EmailInput
-                                                field='email'
-                                                currValue={userData.email}
-                                                isActive={activeInputs.email}
-                                                handleChange={handleChange}
-                                                onFocus={() => handleFocus('email')}
-                                                onBlur={handleBlur}>
-                                            </EmailInput>
-                                            <BirthdayForm
-                                                isMonthActive={activeInputs.month}
-                                                isDayActive={activeInputs.day}
-                                                isYearActive={activeInputs.year}
-                                                month={userData.month}
-                                                day={userData.day}
-                                                year={userData.year}
-                                                handleChange={handleChange}
-                                                onFocus={handleFocus}
-                                                onBlur={handleBlur}
-                                            ></BirthdayForm>
+                                            { step === 1
+                                                ? usernameComponent
+                                                : <div className="editInput container" onClick={() => handleNext(step - 1)}>{usernameComponent}</div>
+                                            }
+                                            { step === 1
+                                                ? emailComponent
+                                                : <div className="editInput container" onClick={() => handleNext(step - 1)}>{emailComponent}</div>
+                                            }
+                                            { step === 1
+                                                ? birthdaySelectComponent
+                                                : <div className="editInput container" onClick={() => handleNext(step - 1)}>{birthdayComponent}</div>
+                                            }
+
                                         </div>
                                     </div>
                                 </div>
                                 <div className="nextContainer container">
                                     <div className="container">
                                         <div className="nextWrap container">
-                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''}`} onClick={() => setStep(step + 1)}>
+                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''} ${step > 1 ? 'complited' : ''}`} onClick={() => handleNext(step + 1)}>
                                                 <div className="nextContent containerBlock">
-                                                    <span className="containerBlock">Next</span>
+                                                    <span className="containerBlock">{step === 1 ? 'Next' : 'Sign up'}</span>
                                                 </div>
                                             </div>
                                         </div>

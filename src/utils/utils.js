@@ -2,8 +2,8 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 
 export function generateOptions(start, end, field) {
     let range = Array.from({ length: end - start + 1 }, (_, index) => ({
-        value: String(start + index).padStart(2, '0'),
-        label: String(start + index),
+        value: String(start + index),
+        label: String(start + index)
     }))
     if (field === 'year') {
         range = range.reverse()
@@ -11,6 +11,7 @@ export function generateOptions(start, end, field) {
     if (field === 'month') {
         range.forEach(opt => {
             opt.label = MONTHS[opt.label - 1]
+            opt.value = MONTHS[opt.label - 1]?.slice(0,3)
         })
     }
     return range
