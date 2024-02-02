@@ -48,4 +48,13 @@ export const signInExistingUser = async (email, password) => {
     }
 }
 
+// export const handleUserCreation = async (email) => {
+//     try {
+//         const userCredential = await createUserWithEmailAndPassword(auth, email, 'temporaryPassword')
+//         await sendEmailVerification(userCredential.user)
+//     } catch (error) {
+//         console.error('Error creating user:', error.message)
+//     }
+// }
+
 export default db;

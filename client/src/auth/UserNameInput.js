@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react"
 import '../css/home/Home.css'
-import "../css/auth/CreateUserModal.css";
+import "../css/auth/CreateUserModal.css"
 
-const UserNameInput = ({ isActive, onFocus, onBlur, handleChange, field, currValue }) => {
+const UserNameInput = ({ isActive, onFocus, onBlur, handleChange, field, currValue, step }) => {
     const [emptyInput, setEmptyInput] = useState(false)
     const handleInputChange = (event) => {
         let value = event.target.value
@@ -11,9 +11,15 @@ const UserNameInput = ({ isActive, onFocus, onBlur, handleChange, field, currVal
             handleChange(field, value)
         }
     }
+    const selectRef = useRef(null)
+    useEffect(() => {
+        if (step === 1) {
+            selectRef.current.focus()
+        }
+    }, [])
     return (
         <div className="nameBox container">
-            <label className={`container ${isActive ? 'activeLabel' : ''} ${emptyInput ? 'emptyLabel' : ''} ${currValue.length ? 'filled' : ''}`} onFocus={onFocus} onBlur={onBlur}>
+            <label className={`container ${isActive ? 'activeLabel' : ''} ${emptyInput ? 'emptyLabel' : ''} ${currValue.length ? 'filled' : ''}`} onFocus={onFocus} onBlur={onBlur} ref={selectRef}>
                 <div className="inputWrap container">
                     <div className="userInput container">
                         <div className={`textWrap containerBlock ${isActive ? 'focused' : ''}`}>
@@ -40,7 +46,7 @@ const UserNameInput = ({ isActive, onFocus, onBlur, handleChange, field, currVal
             <div className="assertive container">
                 <div className="box container">
                     <div className={`container ${emptyInput ? '' : 'hidden'}`}>
-                        <div className="assertiveContent containerBlock">
+                        <div className="assertiveContent containerBlock warning">
                             <span className="containerBlock">What’s your name?</span>
                         </div>
                     </div>

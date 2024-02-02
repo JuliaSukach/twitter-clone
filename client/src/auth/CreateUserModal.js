@@ -1,11 +1,19 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react"
 import '../css/home/Home.css'
-import "../css/auth/CreateUserModal.css";
-import Tooltip from "../utils/tooltip/Tooltip";
-import UserNameInput from "./UserNameInput";
-import EmailInput from "./EmailInput";
-import BirthdayInput from "./BirthdayInput";
-import BirthdayForm from "./BirthdayForm";
+import "../css/auth/CreateUserModal.css"
+import Tooltip from "../utils/tooltip/Tooltip"
+import UserNameInput from "./UserNameInput"
+import EmailInput from "./EmailInput"
+import BirthdayInput from "./BirthdayInput"
+import BirthdayForm from "./BirthdayForm"
+import VerificationForm from "./VerificationForm"
+import PasswordForm  from "./PasswordForm"
+
+const TITLES = {
+    3: 'We sent you a code',
+    4: "You'll need a password"
+}
+
 
 const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
     const [userData, setUserData] = useState({
@@ -17,11 +25,13 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
     })
     const [isDataComplete, setIsDataComplete] = useState(false)
     const [activeInputs, setActiveInputs] = useState({
-        username: false,
+        username: true,
         email: false,
         month: false,
         day: false,
-        year: false
+        year: false,
+        verification: true,
+        password: false
     })
 
     const handleFocus = (field) => {
@@ -52,18 +62,88 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
         })
     }
 
+    const handleVerification = async () => {
+        try {
+            const response = await fetch('http://localhost:3002/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ to: userData.email }),
+            })
+
+            if (response.ok) {
+                const result = await response.json()
+                if (result.code) {
+                    handleVerificationCode('genCode', result.code)
+                }
+                console.log(result)// 'Email sent successfully'
+            } else {
+                console.error('Error sending email:', response.statusText)
+            }
+        } catch (error) {
+            console.error('Error sending email:', error)
+        }
+    }
+
     const [step, setStep] = useState(1)
     const [isValid, setIsValid] = useState(true)
+    const [verification, setVerification] = useState({
+        genCode: '',
+        userCode: ''
+    })
     const handleSubmit = (event) => {
         event.preventDefault()
         signUpUser(userData)
     }
 
     const handleNext = (value) => {
+        if (value === 3) {
+            setIsDataComplete(false)
+            handleVerification()
+            setActiveInputs((prev) => ({ ...Object.fromEntries(Object.keys(prev).map((key) => [key, key === 'verification'])), 'verification': true }))
+        } else if (value === 4) {
+            if (verification.genCode !== verification.userCode) {
+                value--
+            }
+        }
         setStep(value)
     }
 
+    const handleVerificationCode = (field, value) => {
+        setVerification(prevData => {
+            const updatedData = {
+                ...prevData,
+                [field]: value
+            }
+            let allDataFilled = updatedData.userCode !== ''
+            setIsDataComplete(allDataFilled)
+            return updatedData
+        })
+    }
+
+    const handlePassword = (field, value) => {
+        setPassword(prevData => {
+            const updatedData = {
+                ...prevData,
+                [field]: value,
+                isValid: value.length && value.length < 8 ? false : true
+            }
+
+            let allDataFilled = updatedData.isValid
+            setIsDataComplete(allDataFilled)
+            return updatedData
+        })
+    }
+
+    const [password, setPassword] = useState({
+        value: "",
+        showPassword: false,
+        isValid: true
+    })
+
     const usernameComponent = <UserNameInput
+            step={step}
             field='username'
             currValue={userData.username}
             isActive={activeInputs.username}
@@ -141,29 +221,68 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                     <div className="accountContent container">
                                         <div className="container">
                                             <div className="infoHeader container">
-                                                <h1 className="containerBlock"><span className="containerBlock">Create your account</span></h1>
+                                                <h1 className="containerBlock"><span className="containerBlock">{TITLES[step] ?? 'Create your account'}</span></h1>
+                                                {(step === 3 || step === 4) && (
+                                                    <div className="infoSubheader container">
+                                                        <div className="container">
+                                                            <div className="subheader containerBlock">
+                                                                <span className="containerBlock">{step === 3 ? `Enter it below to verify ${userData.email}.` : 'Make sure it’s 8 characters or more.'}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="container" onSubmit={event => handleSubmit(event)}>
-                                            { step === 1
-                                                ? usernameComponent
-                                                : <div className="editInput container" onClick={() => handleNext(step - 1)}>{usernameComponent}</div>
-                                            }
-                                            { step === 1
-                                                ? emailComponent
-                                                : <div className="editInput container" onClick={() => handleNext(step - 1)}>{emailComponent}</div>
-                                            }
-                                            { step === 1
-                                                ? birthdaySelectComponent
-                                                : <div className="editInput container" onClick={() => handleNext(step - 1)}>{birthdayComponent}</div>
-                                            }
-
+                                            { step === 1 ? (
+                                                usernameComponent
+                                            ) : (
+                                                step === 2 ? (
+                                                    <div className="editInput container" onClick={() => handleNext(step - 1)}>
+                                                        {usernameComponent}
+                                                    </div>
+                                                ) : null
+                                            )}
+                                            { step === 1 ? (
+                                                emailComponent
+                                            ) : (
+                                                step === 2 ? (
+                                                    <div className="editInput container" onClick={() => handleNext(step - 1)}>{emailComponent}</div>
+                                                ) : null
+                                            )}
+                                            { step === 1 ? (
+                                                birthdaySelectComponent
+                                            ) : (
+                                                step === 2 ? (
+                                                    <div className="editInput container" onClick={() => handleNext(step - 1)}>{birthdayComponent}</div>
+                                                ) : null
+                                            )}
+                                            { step === 3 && (
+                                                <VerificationForm
+                                                    isActive={activeInputs.verification}
+                                                    code={verification.userCode}
+                                                    handleChange={handleVerificationCode}
+                                                    onFocus={() => handleFocus('verification')}
+                                                    onBlur={handleBlur}
+                                                    field='userCode'
+                                                />
+                                            )}
+                                            { step === 4 && (
+                                                <PasswordForm
+                                                    isActive={activeInputs.password}
+                                                    onFocus={() => handleFocus('password')}
+                                                    onBlur={handleBlur}
+                                                    field='value'
+                                                    password={password}
+                                                    handleChange={handlePassword}
+                                                />
+                                            )}
                                         </div>
                                     </div>
                                 </div>
                                 <div className="nextContainer container">
                                     <div className="container">
-                                        <div className={`agreement containerBlock ${step === 1 ? 'hidden' : ''}`}>
+                                        <div className={`agreement containerBlock ${step === 2 ? '' : 'hidden'}`}>
                                             <span className="containerBlock">By signing up, you agree to our </span>
                                             <a className="containerBlock" href="https://twitter.com/en/tos#new">Terms</a>
                                             <span className="containerBlock">, </span>
@@ -174,9 +293,9 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                             <a className="containerBlock" href="https://twitter.com/en/privacy">Learn more</a>
                                         </div>
                                         <div className="nextWrap container">
-                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''} ${step > 1 ? 'complited' : ''}`} onClick={() => handleNext(step + 1)}>
+                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''} ${step === 2 ? 'complited' : ''}`} onClick={() => handleNext(step + 1)}>
                                                 <div className="nextContent containerBlock">
-                                                    <span className="containerBlock">{step === 1 ? 'Next' : 'Sign up'}</span>
+                                                    <span className="containerBlock">{step === 2 ? 'Sign up' : 'Next'}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -191,4 +310,4 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
     )
 }
 
-export default CreateUserModal;
+export default CreateUserModal
