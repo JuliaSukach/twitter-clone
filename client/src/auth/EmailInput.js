@@ -33,7 +33,7 @@ const EmailInput = ({ isActive, onFocus, onBlur, handleChange, field, currValue,
             <div className="assertive container">
                 <div className="box container">
                     <div className={`container ${!isValid ? '' : 'hidden'}`}>
-                        <div className="assertiveContent containerBlock">
+                        <div className="assertiveContent containerBlock warning">
                             <span className="containerBlock">Please enter a valid email.</span>
                         </div>
                     </div>
