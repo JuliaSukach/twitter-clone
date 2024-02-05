@@ -76,61 +76,6 @@
   font-weight: 700;
   line-height: 36px;
 }
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .button {
-  margin-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  width: 300px;
-  height: 40px;
-  max-width: 380px;
-  min-height: 36px;
-  min-width: 36px;
-  flex: 0 0 auto;
-  border: 1px solid #cfd9de;
-  border-radius: 9999px;
-  background-color: #ffffff;
-  outline-style: none;
-  transition-duration: 0.2s;
-  cursor: pointer;
-}
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .button .buttonContent {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  min-width: 0px;
-  color: #0f1419;
-  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 20px;
-  text-align: center;
-  text-overflow: unset;
-  word-wrap: break-word;
-}
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .button .buttonContent .gmail-icon {
-  display: inline-block;
-  margin-right: 4px;
-  position: relative;
-  vertical-align: text-bottom;
-  width: 20px;
-  height: 20px;
-  max-width: 100%;
-  color: #0f1419;
-}
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .button .buttonContent span {
-  max-width: 100%;
-  min-width: 0px;
-  font-family: inherit;
-  font-size: 15px;
-  line-height: 20px;
-  text-overflow: unset;
-  word-wrap: break-word;
-  white-space: nowrap;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
 .container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .createAccount {
   border-color: rgba(0, 0, 0, 0);
   background-color: #1d9bf0;
@@ -142,46 +87,6 @@
 .container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .loginLink .buttonContent {
   text-overflow: unset;
   color: #1d9bf0;
-}
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider {
-  margin-bottom: 4px;
-  margin-top: 4px;
-  max-width: 380px;
-  width: 300px;
-}
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap {
-  flex-direction: row;
-  margin: 4px -4px;
-}
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .leftLine,
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .rightLine {
-  flex: 1;
-  flex-basis: 0px;
-  justify-content: center;
-  margin-left: 4px;
-  margin-right: 4px;
-  min-width: 0px;
-}
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .leftLine .line,
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .rightLine .line {
-  height: 1px;
-  background-color: #eff3f4;
-}
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .center {
-  flex-basis: auto;
-  min-width: 0px;
-  margin-left: 4px;
-  margin-right: 4px;
-}
-.container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .divider .dividerWrap .center .text {
-  min-width: 0px;
-  color: #0f1419;
-  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 20px;
-  text-overflow: unset;
-  word-wrap: break-word;
 }
 .container .containerWrap .mainContainer .mainWrap .content .auth .layout .authForm .agreement {
   display: inline;
@@ -266,6 +171,110 @@
   text-align: inherit;
   text-decoration: none;
   white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.formButton {
+  margin-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 300px;
+  height: 40px;
+  max-width: 380px;
+  min-height: 36px;
+  min-width: 36px;
+  flex: 0 0 auto;
+  border: 1px solid #cfd9de;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  outline-style: none;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+.formButton .buttonContent {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 0px;
+  color: #0f1419;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  text-overflow: unset;
+  word-wrap: break-word;
+}
+.formButton .buttonContent .gmail-icon {
+  display: inline-block;
+  margin-right: 4px;
+  position: relative;
+  vertical-align: text-bottom;
+  width: 20px;
+  height: 20px;
+  max-width: 100%;
+  color: #0f1419;
+}
+.formButton .buttonContent span {
+  max-width: 100%;
+  min-width: 0px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 20px;
+  text-overflow: unset;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.formButton.login {
+  margin: auto;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+.formButton.login span {
+  font-weight: 500;
+  font-size: 14px;
+}
+.divider {
+  margin-bottom: 4px;
+  margin-top: 4px;
+  max-width: 380px;
+  width: 300px;
+}
+.divider .dividerWrap {
+  flex-direction: row;
+  margin: 4px -4px;
+}
+.divider .dividerWrap .leftLine,
+.divider .dividerWrap .rightLine {
+  flex: 1;
+  flex-basis: 0px;
+  justify-content: center;
+  margin-left: 4px;
+  margin-right: 4px;
+  min-width: 0px;
+}
+.divider .dividerWrap .leftLine .line,
+.divider .dividerWrap .rightLine .line {
+  height: 1px;
+  background-color: #eff3f4;
+}
+.divider .dividerWrap .center {
+  flex-basis: auto;
+  min-width: 0px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.divider .dividerWrap .center .text {
+  min-width: 0px;
+  color: #0f1419;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  text-overflow: unset;
   word-wrap: break-word;
 }
 /*# sourceMappingURL=Home.css.map */

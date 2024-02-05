@@ -1,8 +1,8 @@
-//import firebase from "./firebase";
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+//import firebase from "./firebase"
+import { initializeApp } from "firebase/app"
+import { getFirestore } from "firebase/firestore"
 import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
-    sendEmailVerification, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+    sendEmailVerification, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
 
 const firebaseConfig = {
     apiKey: "AIzaSyAE9WQ_pqV26AwG8Q3OUeXX8vf4AE4tAZc",
@@ -12,20 +12,20 @@ const firebaseConfig = {
     messagingSenderId: "968252946814",
     appId: "1:968252946814:web:68bec281c1994ad53e5b2f",
     measurementId: "G-B2QJWMT158"
-};
+}
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 // Initialize Firebase Auth provider
-const provider = new GoogleAuthProvider();
+const provider = new GoogleAuthProvider()
 
 // whenever a user interacts with the provider, we force them to select an account
 provider.setCustomParameters({
     prompt : "select_account "
-});
+})
 
-export const auth = getAuth();
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const auth = getAuth()
+export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
 export const signUpWithEmail = async (email, password, username) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
@@ -35,7 +35,7 @@ export const signUpWithEmail = async (email, password, username) => {
         })
         return userCredential
     } catch (error) {
-        console.error('Error signing up:', error.message);
+        console.error('Error signing up:', error.message)
     }
 }
 
@@ -44,17 +44,8 @@ export const signInExistingUser = async (email, password) => {
         const userCredential = signInWithEmailAndPassword(auth, email, password)
         return userCredential
     } catch (error) {
-        console.error('Error signing up:', error.message);
+        console.error('Error signing up:', error.message)
     }
 }
 
-// export const handleUserCreation = async (email) => {
-//     try {
-//         const userCredential = await createUserWithEmailAndPassword(auth, email, 'temporaryPassword')
-//         await sendEmailVerification(userCredential.user)
-//     } catch (error) {
-//         console.error('Error creating user:', error.message)
-//     }
-// }
-
-export default db;
+export default db

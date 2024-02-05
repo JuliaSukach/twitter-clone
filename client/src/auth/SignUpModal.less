@@ -1,9 +1,142 @@
-i {
-    position: relative;
-    top: 2px;
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    background: transparent 0 0 no-repeat;
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' fill='none'/%3E%3Cpath d='M17.9686 14.1623L26.7065 4H24.6358L17.0488 12.8238L10.9891 4H4L13.1634 17.3432L4 28H6.07069L14.0827 18.6817L20.4822 28H27.4714L17.9681 14.1623H17.9686ZM15.1326 17.4607L14.2041 16.132L6.81679 5.55961H9.99723L15.9589 14.0919L16.8873 15.4206L24.6368 26.5113H21.4564L15.1326 17.4612V17.4607Z' fill='white'/%3E%3C/svg%3E%0A")
+.group {
+    .modal {
+        .modalContent {
+            .alignCenter {
+                .closeContainer {
+                    flex-shrink: 1;
+                    flex-basis: 50%;
+                    flex-grow: 1;
+                }
+
+                .titleContainer {
+                    align-items: center;
+
+                    .titleWrap {
+                        display: flex;
+                        min-width: 32px;
+                        align-self: stretch;
+                        align-items: center;
+                        justify-content: center;
+                        flex-grow: 1;
+
+                        svg {
+                            display: inline-block;
+                            position: relative;
+                            vertical-align: text-bottom;
+                            color: rgba(15,20,25,1.00);
+                            height: 1.75rem;
+                            max-width: 100%;
+                            flex-grow: 1;
+                        }
+                    }
+                }
+
+                .space {
+                    min-width: 56px;
+                    align-items: flex-end;
+                    flex-shrink: 1;
+                    flex-basis: 50%;
+                    align-self: stretch;
+                    justify-content: center;
+                    flex-grow: 1;
+                    min-height: 32px;
+                }
+
+                .accountInfo {
+                    .wrapper {
+                        .accountContent {
+                            margin: auto;
+                            padding-left: 32px;
+                            padding-right: 32px;
+                            padding-bottom: 48px;
+                            max-width: 364px;
+                            min-width: 364px;
+
+                            .activeLabel {
+                                .textWrap {
+                                    &.focused {
+                                        padding: 8px 8px 0px 8px !important;
+                                        line-height: normal !important;
+                                        span {
+                                            vertical-align: top;
+                                            font-size: small;
+                                        }
+                                    }
+                                }
+                            }
+                            .filled {
+                                .textWrap {
+                                    padding: 8px 8px 0px 8px !important;
+                                    line-height: normal !important;
+                                    span {
+                                        vertical-align: top;
+                                        font-size: small;
+                                    }
+                                }
+                            }
+                            .activeLabel {
+                                border-color: rgb(29, 155, 240);
+                                box-shadow: rgb(29, 155, 240) 0px 0px 0px 1px;
+
+                                .textWrap {
+                                    span {
+                                        color: rgb(29, 155, 240) !important;
+                                    }
+                                }
+                            }
+                            .nextButton, .forgotPassButton {
+                                margin-bottom: 12px;
+                                margin-top: 12px;
+                                transition-duration: 0.2s;
+                                outline-style: none;
+                                cursor: pointer;
+                                width: 100%;
+
+                                .buttonContent {
+                                    text-overflow: unset;
+                                    color: rgb(255, 255, 255);
+                                }
+                            }
+
+                            .nextButton {
+                                border-color: rgba(0, 0, 0, 0);
+                                background-color: rgb(15, 20, 25);
+                            }
+
+                            .forgotPassButton {
+                                .buttonContent {
+                                    text-overflow: unset;
+                                    color: rgb(15, 20, 25);
+                                }
+                            }
+
+                            .signUpBox {
+                                text-overflow: unset;
+                                color: rgb(83, 100, 113);
+                                font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                                line-height: 20px;
+                                word-wrap: break-word;
+                                min-width: 0px;
+                                font-size: 15px;
+                                margin-top: 40px;
+                                font-weight: 400;
+
+                                .signUpLink {
+                                    text-overflow: unset;
+                                    color: rgb(29, 155, 240);
+                                    word-wrap: break-word;
+                                    font-family: inherit;
+                                    min-width: 0px;
+
+                                    &:hover {
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
