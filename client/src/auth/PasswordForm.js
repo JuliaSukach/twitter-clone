@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react"
 import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css"
 
-const PasswordForm = ({ isActive, onFocus, onBlur, field,  password, handleChange }) => {
+const PasswordForm = ({ isActive, onFocus, onBlur, field,  password, handleChange}) => {
     const handleInputChange = (event) => {
         let value = event.target.value
         handleChange(field, value)
