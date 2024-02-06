@@ -135,9 +135,25 @@
                                     white-space: nowrap;
                                     overflow-x: hidden;
                                     overflow-y: hidden;
-                                    span {
+                                }
+                            }
 
-                                    }
+                            .titleWrap {
+                                display: flex;
+                                min-width: 32px;
+                                align-self: stretch;
+                                align-items: center;
+                                justify-content: center;
+                                flex-grow: 1;
+
+                                svg {
+                                    display: inline-block;
+                                    position: relative;
+                                    vertical-align: text-bottom;
+                                    color: rgba(15,20,25,1.00);
+                                    height: 1.75rem;
+                                    max-width: 100%;
+                                    flex-grow: 1;
                                 }
                             }
                         }
@@ -436,6 +452,12 @@
                                             color: rgb(244, 33, 46) !important;
                                         }
                                     }
+                                }
+
+                                .disabled {
+                                    background-color: rgba(239,243,244,1.00);
+                                    opacity: 0.5;
+                                    cursor: default;
                                 }
 
                             }

@@ -8,6 +8,7 @@ import BirthdayInput from "./BirthdayInput"
 import BirthdayForm from "./BirthdayForm"
 import VerificationForm from "./VerificationForm"
 import PasswordForm  from "./PasswordForm"
+import Button from "./Button"
 
 const TITLES = {
     3: 'We sent you a code',
@@ -208,7 +209,7 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                                 </Tooltip>
                                             </div>
                                             <div className="titleContainer container">
-                                                <div className="titleWrap container">
+                                                <div className="container">
                                                     <h2><span>Step {step} of 5</span></h2>
                                                 </div>
                                             </div>
@@ -280,27 +281,11 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="nextContainer container">
-                                    <div className="container">
-                                        <div className={`agreement containerBlock ${step === 2 ? '' : 'hidden'}`}>
-                                            <span className="containerBlock">By signing up, you agree to our </span>
-                                            <a className="containerBlock" href="https://twitter.com/en/tos#new">Terms</a>
-                                            <span className="containerBlock">, </span>
-                                            <a className="containerBlock" href="https://twitter.com/en/privacy">Privacy Policy</a>
-                                            <span className="containerBlock">, and </span>
-                                            <a className="containerBlock" href="https://help.twitter.com/en/rules-and-policies/x-cookies">Cookie Use</a>
-                                            <span className="containerBlock">. X may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy. </span>
-                                            <a className="containerBlock" href="https://twitter.com/en/privacy">Learn more</a>
-                                        </div>
-                                        <div className="nextWrap container">
-                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''} ${step === 2 ? 'complited' : ''}`} onClick={() => handleNext(step + 1)}>
-                                                <div className="nextContent containerBlock">
-                                                    <span className="containerBlock">{step === 2 ? 'Sign up' : 'Next'}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <Button
+                                    step={step}
+                                    isDataComplete={isDataComplete}
+                                    handleNext={handleNext}
+                                />
                             </div>
                         </div>
                     </div>

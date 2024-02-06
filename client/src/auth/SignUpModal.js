@@ -4,6 +4,9 @@ import "../css/auth/CreateUserModal.css"
 import Tooltip from "../utils/tooltip/Tooltip"
 import GoogleLogin from "./GoogleLogin"
 import Divider from "./Divider"
+import PasswordForm  from "./PasswordForm"
+import Button from "./Button"
+import SignupLink from "./SignupLink"
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -22,15 +25,26 @@ const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
     const [step, setStep] = useState(1)
     const [userData, setUserData] = useState({
         value: '',
-        isActiveField: false
+        isLoginActive: false,
     })
 
-    const handleData = (event) => {
+    const handleData = (event, field) => {
         let value = event.target.value
         setUserData({
             ...userData,
-            value
+            [field]: value
         })
+    }
+
+    const [password, setPassword] = useState({
+        value: "",
+        showPassword: false,
+        isValid: true,
+        isPassActive: false,
+    })
+
+    const handleNext = (value) => {
+        setStep(value)
     }
 
     return (
@@ -38,7 +52,7 @@ const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
             <div className="bgContainer container"></div>
             <div className="modal container">
                 <div className="modalContent container">
-                    <div className='alignContent container alignCenter'>
+                    <div className={`alignContent container ${step === 1 ? 'alignCenter' : ''} loginForm`}>
                         <div className='modalContent container'>
                             <div className='container'>
                                 <div className="header container">
@@ -77,68 +91,72 @@ const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
                                         <div className="accountContent container">
                                             <div className="container">
                                                 <div className="infoHeader container">
-                                                    <h1 className="containerBlock"><span className="containerBlock">Sign in to X</span></h1>
+                                                    <h1 className="containerBlock"><span className="containerBlock">{step === 1 ? 'Sign in to X' : 'Enter your password'}</span></h1>
                                                 </div>
                                             </div>
-                                            <GoogleLogin mode='modal'/>
-                                            <Divider/>
-                                            <div className="nameBox container">
-                                                <label className={`container ${userData.isActiveField ? 'activeLabel' : ''} ${userData.value.length ? 'filled' : ''}`}
-                                                    onFocus={() => setUserData({...userData, 'isActiveField': true })}
-                                                    onBlur={() => setUserData({...userData, 'isActiveField': false })}
+                                            {step === 1 && (
+                                                <>
+                                                    <GoogleLogin mode='modal' />
+                                                    <Divider />
+                                                </>
+                                            )}
+                                            <div className='nameBox container'>
+                                                <label className={`container ${userData.isLoginActive ? 'activeLabel' : ''} ${userData.value.length ? 'filled' : ''} ${step === 2 ? 'disabled': ''}`}
+                                                    onFocus={() => setUserData({...userData, 'isLoginActive': true })}
+                                                    onBlur={() => setUserData({...userData, 'isLoginActive': false })}
                                                 >
                                                     <div className="inputWrap container">
                                                         <div className="userInput container">
-                                                            <div className={`textWrap containerBlock ${userData.isActiveField ? 'focused' : ''}`}>
+                                                            <div className={`textWrap containerBlock ${userData.isLoginActive ? 'focused' : ''}`}>
                                                                 <span className="containerBlock">Email address or username</span>
                                                             </div>
                                                         </div>
                                                         <div className="inputBox container">
                                                             <div className="wrap containerBlock">
-                                                                <input type="text" value={userData.value} onChange={(event) => handleData(event)}/>
+                                                                <input type="text" value={userData.value} onChange={(event) => handleData(event, 'value')} disabled={step === 2 ? true : false}/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </label>
                                             </div>
-                                            <div className="nextButton container formButton" href="/" onClick={() => setIsLoginUserOpen(true)}>
-                                                <div className="buttonContent">
-                                                    <span>Next</span>
-                                                </div>
-                                            </div>
-                                            <div className="forgotPassButton container formButton" href="/" onClick={() => setIsLoginUserOpen(true)}>
-                                                <div className="buttonContent">
-                                                    <span>Forgot password?</span>
-                                                </div>
-                                            </div>
-                                            <div className="signUpBox containerBox">
-                                                <span className="containerBox">Don’t have an account? </span>
-                                                <span className="signUpLink containerBox">Sign Up</span>
-                                            </div>
+                                            {step === 2 && (
+                                                <>
+                                                    <PasswordForm
+                                                        isActive={password.isPassActive}
+                                                        onFocus={() => setPassword({...password, 'isPassActive': true })}
+                                                        onBlur={() => setPassword({...password, 'isPassActive': false })}
+                                                        field='value'
+                                                        password={password}
+                                                        handleChange={(field, value) => setPassword({...password, [field]: value })}
+                                                    />
+                                                </>
+                                            )}
+                                            {step === 1 && (
+                                                <>
+                                                    <div className='nextButton container formButton' href="/" onClick={() => handleNext(step + 1)}>
+                                                        <div className="buttonContent">
+                                                            <span>Next</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="forgotPassButton container formButton" href="/" onClick={() => setIsLoginUserOpen(true)}>
+                                                        <div className="buttonContent">
+                                                            <span>Forgot password?</span>
+                                                        </div>
+                                                    </div>
+                                                    <SignupLink/>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
-                                {/* <div className="nextContainer container">
-                                    <div className="container">
-                                        <div className={`agreement containerBlock ${step === 2 ? '' : 'hidden'}`}>
-                                            <span className="containerBlock">By signing up, you agree to our </span>
-                                            <a className="containerBlock" href="https://twitter.com/en/tos#new">Terms</a>
-                                            <span className="containerBlock">, </span>
-                                            <a className="containerBlock" href="https://twitter.com/en/privacy">Privacy Policy</a>
-                                            <span className="containerBlock">, and </span>
-                                            <a className="containerBlock" href="https://help.twitter.com/en/rules-and-policies/x-cookies">Cookie Use</a>
-                                            <span className="containerBlock">. X may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy. </span>
-                                            <a className="containerBlock" href="https://twitter.com/en/privacy">Learn more</a>
-                                        </div>
-                                        <div className="nextWrap container">
-                                            <div className={`nextBox container ${isDataComplete ? 'active' : ''} ${step === 2 ? 'complited' : ''}`} onClick={() => handleNext(step + 1)}>
-                                                <div className="nextContent containerBlock">
-                                                    <span className="containerBlock">{step === 2 ? 'Sign up' : 'Next'}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
+                                {step === 2 && (
+                                    <Button
+                                        role={'login'}
+                                        step={step}
+                                        isDataComplete={password.value ? true : false}
+                                        handleNext={handleSubmit}
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>

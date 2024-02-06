@@ -130,6 +130,23 @@
   overflow-x: hidden;
   overflow-y: hidden;
 }
+.group .modal .modalContent .alignContent .header .headerWrap .titleContainer .titleWrap {
+  display: flex;
+  min-width: 32px;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.group .modal .modalContent .alignContent .header .headerWrap .titleContainer .titleWrap svg {
+  display: inline-block;
+  position: relative;
+  vertical-align: text-bottom;
+  color: #0f1419;
+  height: 1.75rem;
+  max-width: 100%;
+  flex-grow: 1;
+}
 .group .modal .modalContent .alignContent .accountInfo {
   flex-grow: 1;
   flex-shrink: 1;
@@ -537,6 +554,15 @@
 .group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .verifyBox .invalidInput .textWrap span,
 .group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .passwordBox .invalidInput .textWrap span {
   color: #f4212e !important;
+}
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .nameBox .disabled,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .loginBox .disabled,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayBox .disabled,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .verifyBox .disabled,
+.group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .passwordBox .disabled {
+  background-color: #eff3f4;
+  opacity: 0.5;
+  cursor: default;
 }
 .group .modal .modalContent .alignContent .accountInfo .wrapper .accountContent .birthdayForm {
   margin-top: 20px;
