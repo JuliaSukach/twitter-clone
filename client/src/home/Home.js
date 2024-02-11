@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"
 import '../css/home/Home.css'
 import '../css/App.css'
 import { signUpWithEmail, signInExistingUser } from "../firebase/firebase"
-import { BrowserRouter as Router, Link, Navigate, useNavigate } from "react-router-dom";
-import CreateUserModal from "../auth/CreateUserModal";
+import { BrowserRouter as Router, Link, Navigate, useNavigate } from "react-router-dom"
+import CreateUserModal from "../auth/CreateUserModal"
 import SignUpModal from "../auth/SignUpModal"
-import GoogleLogin from "../auth/GoogleLogin";
-import Footer from "../footer/Footer";
-import { collection, addDoc } from "firebase/firestore";
-import db from "../firebase/firebase";
-import Divider from "../auth/Divider";
+import GoogleLogin from "../auth/GoogleLogin"
+import Footer from "../footer/Footer"
+import { collection, addDoc } from "firebase/firestore"
+import db from "../firebase/firebase"
+import Divider from "../auth/Divider"
 
 
 function Home() {
-    const [isCreateUserOpen, setIsCreateUserOpen] = useState(false)
-    const [isLoginUserOpen, setIsLoginUserOpen] = useState(false)
-    const [error, setError] = useState(null);
+    const [mode, setMode] = useState(null)
+
+
+    const [error, setError] = useState(null)
     const navigate = useNavigate()
     const signUpUser = async (data) => {
-        let { username, email, birthday } = data
-        let password = 'LoveEdward123'
+        let { username, email, password, month, day, year } = data
         const response = await signUpWithEmail(email, password, username)
         if (response.user) {
             let user = response.user
@@ -29,15 +29,17 @@ function Home() {
                     username,
                     displayName: username,
                     password,
-                    birthday
+                    birthday: {
+                        month,
+                        day,
+                        year
+                    }
                 })
-                setIsCreateUserOpen(false)
-                navigate('/user')
+                //navigate('/user')
             } catch (e) {
-                console.error("Error adding the user: ", e);
-                setError("An error occurred while sending the tweet. Please try again.");
+                console.error("Error adding the user: ", e)
+                setError("An error occurred while sending the tweet. Please try again.")
             }
-
         }
     }
 
@@ -48,6 +50,13 @@ function Home() {
         if (response.user) {
             navigate('/user')
         }
+    }
+
+
+
+    const buttonClick = (mode) => {
+        navigate(mode ? `/i/flow/${mode}` : '/')
+        setMode(mode)
     }
     return (
         <div className="container flex events">
@@ -67,7 +76,7 @@ function Home() {
                                         <div className="authForm container">
                                             <GoogleLogin/>
                                             <Divider/>
-                                            <div className="createAccount container formButton" href="/" onClick={() => setIsCreateUserOpen(true)}>
+                                            <div className="createAccount container formButton" href="/" onClick={() => buttonClick('signup')}>
                                                 <div className="buttonContent">
                                                     <span>Create account</span>
                                                 </div>
@@ -88,7 +97,7 @@ function Home() {
                                                 <div className="text">
                                                     <span>Already have an account?</span>
                                                 </div>
-                                                <div className="loginLink container formButton" href="/" onClick={() => setIsLoginUserOpen(true)}>
+                                                <div className="loginLink container formButton" href="/" onClick={() => buttonClick('login')}>
                                                     <div className="buttonContent">
                                                         <span>Sign in</span>
                                                     </div>
@@ -106,14 +115,14 @@ function Home() {
                                 </div>
                             </div>
                             <Footer></Footer>
-                            {isCreateUserOpen && <CreateUserModal setIsCreateUserOpen={setIsCreateUserOpen} signUpUser={signUpUser} />}
-                            {isLoginUserOpen && <SignUpModal setIsLoginUserOpen={setIsLoginUserOpen} logInUser={logInUser} />}
+                            {mode === 'signup' && <CreateUserModal buttonClick={buttonClick} signUpUser={signUpUser} />}
+                            {mode === 'login' && <SignUpModal buttonClick={buttonClick} logInUser={logInUser}/>}
                         </div>
                     </main>
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default Home;
+export default Home

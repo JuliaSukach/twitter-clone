@@ -12,11 +12,12 @@ import Button from "./Button"
 
 const TITLES = {
     3: 'We sent you a code',
-    4: "You'll need a password"
+    4: "You'll need a password",
+    5: 'Pick a profile picture'
 }
 
 
-const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
+const CreateUserModal = ({ buttonClick, signUpUser }) => {
     const [userData, setUserData] = useState({
         username: '',
         email: '',
@@ -93,10 +94,6 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
         genCode: '',
         userCode: ''
     })
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        signUpUser(userData)
-    }
 
     const handleNext = (value) => {
         if (value === 3) {
@@ -107,6 +104,11 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
             if (verification.genCode !== verification.userCode) {
                 value--
             }
+        } else if (value === 5) {
+            let data = {...userData, ...{ password: password.value }}
+            signUpUser(data)
+        } else if (value === 6) {
+
         }
         setStep(value)
     }
@@ -197,7 +199,7 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                         <div className="headerWrap container">
                                             <div className="closeContainer container">
                                                 <Tooltip text="Close">
-                                                    <div className="closeWrap container" onClick={() => setIsCreateUserOpen(false)}>
+                                                    <div className="closeWrap container" onClick={() => buttonClick(null)}>
                                                         <div className="close container">
                                                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                                                 <g>
@@ -234,7 +236,7 @@ const CreateUserModal = ({ setIsCreateUserOpen, signUpUser }) => {
                                                 )}
                                             </div>
                                         </div>
-                                        <div className="container" onSubmit={event => handleSubmit(event)}>
+                                        <div className="container">
                                             { step === 1 ? (
                                                 usernameComponent
                                             ) : (

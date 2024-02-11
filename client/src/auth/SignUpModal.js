@@ -10,7 +10,7 @@ import SignupLink from "./SignupLink"
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
+const SignUpModal = ({ buttonClick, logInUser }) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
 
@@ -60,7 +60,7 @@ const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
                                         <div className="headerWrap container">
                                             <div className="closeContainer container">
                                                 <Tooltip text="Close">
-                                                    <div className="closeWrap container" onClick={() => setIsLoginUserOpen(false)}>
+                                                    <div className="closeWrap container" onClick={() => buttonClick(null)}>
                                                         <div className="close container">
                                                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                                                 <g>

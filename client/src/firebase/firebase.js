@@ -30,9 +30,9 @@ export const signUpWithEmail = async (email, password, username) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
         sendEmailVerification(userCredential.user)
-        updateProfile(auth.currentUser, {
-            displayName: username
-        })
+        // updateProfile(auth.currentUser, {
+        //     displayName: username
+        // })
         return userCredential
     } catch (error) {
         console.error('Error signing up:', error.message)
