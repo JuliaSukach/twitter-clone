@@ -7,6 +7,7 @@ import Divider from "./Divider"
 import PasswordForm  from "./PasswordForm"
 import Button from "./Button"
 import SignupLink from "./SignupLink"
+import Button1 from "./Button1"
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -132,16 +133,16 @@ const SignUpModal = ({ buttonClick, logInUser }) => {
                                             )}
                                             {step === 1 && (
                                                 <>
-                                                    <div className='nextButton container formButton' href="/" onClick={() => handleNext(step + 1)}>
-                                                        <div className="buttonContent">
-                                                            <span>Next</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="forgotPassButton container formButton" href="/" onClick={() => buttonClick(null)}>
-                                                        <div className="buttonContent">
-                                                            <span>Forgot password?</span>
-                                                        </div>
-                                                    </div>
+                                                    <Button1
+                                                        text={'Next'}
+                                                        handleClick={() => handleNext(step + 1)}
+                                                        styleName={'black'}
+                                                    />
+                                                    <Button1
+                                                        text={'Forgot password?'}
+                                                        handleClick={() => buttonClick(null)}
+                                                        styleName={'grey'}
+                                                    />
                                                     <SignupLink/>
                                                 </>
                                             )}

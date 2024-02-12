@@ -183,12 +183,28 @@
   min-height: 36px;
   min-width: 36px;
   flex: 0 0 auto;
-  border: 1px solid #cfd9de;
   border-radius: 9999px;
-  background-color: #ffffff;
   outline-style: none;
   transition-duration: 0.2s;
   cursor: pointer;
+}
+.formButton.grey {
+  border: 1px solid #cfd9de;
+  background-color: #ffffff;
+  color: #0f1419;
+}
+.formButton.grey.signup {
+  color: #1d9bf0;
+}
+.formButton.blue {
+  border-color: rgba(0, 0, 0, 0);
+  background-color: #1d9bf0;
+  color: #ffffff;
+}
+.formButton.black {
+  border-color: rgba(0, 0, 0, 0);
+  background-color: #0f1419;
+  color: #ffffff;
 }
 .formButton .buttonContent {
   display: flex;
@@ -197,7 +213,6 @@
   justify-content: center;
   align-items: center;
   min-width: 0px;
-  color: #0f1419;
   font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: 700;

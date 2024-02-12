@@ -10,6 +10,7 @@ import Footer from "../footer/Footer"
 import { collection, addDoc } from "firebase/firestore"
 import db from "../firebase/firebase"
 import Divider from "../auth/Divider"
+import Button1 from "../auth/Button1"
 
 
 function Home() {
@@ -73,11 +74,12 @@ function Home() {
                                         <div className="authForm container">
                                             <GoogleLogin/>
                                             <Divider/>
-                                            <div className="createAccount container formButton" href="/" onClick={() => buttonClick('signup')}>
-                                                <div className="buttonContent">
-                                                    <span>Create account</span>
-                                                </div>
-                                            </div>
+                                            <Button1
+                                                text={'Create account'}
+                                                handleClick={() => buttonClick('signup')}
+                                                field={'signup'}
+                                                styleName={'blue'}
+                                            />
                                             <div className="agreement container">
                                                 By signing up, you agree to the
                                                 <a href="https://twitter.com/tos" className="container text" role="link" target="_blank">
@@ -94,11 +96,12 @@ function Home() {
                                                 <div className="text">
                                                     <span>Already have an account?</span>
                                                 </div>
-                                                <div className="loginLink container formButton" href="/" onClick={() => buttonClick('login')}>
-                                                    <div className="buttonContent">
-                                                        <span>Sign in</span>
-                                                    </div>
-                                                </div>
+                                                <Button1
+                                                    text={'Sign in'}
+                                                    handleClick={() => buttonClick('login')}
+                                                    field={'signup'}
+                                                    styleName={'grey signup'}
+                                                />
                                             </div>
                                         </div>
                                     </div>

@@ -9,6 +9,7 @@ import BirthdayForm from "./BirthdayForm"
 import VerificationForm from "./VerificationForm"
 import PasswordForm  from "./PasswordForm"
 import Button from "./Button"
+import Button1 from "../auth/Button1"
 
 const TITLES = {
     3: 'We sent you a code',
