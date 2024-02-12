@@ -44,15 +44,12 @@ function Home() {
     }
 
     const logInUser = async (data) => {
-        let { username, email } = data
-        let password = 'LoveEdward123'
+        let { password, email } = data
         const response = await signInExistingUser(email, password)
         if (response.user) {
             navigate('/user')
         }
     }
-
-
 
     const buttonClick = (mode) => {
         navigate(mode ? `/i/flow/${mode}` : '/')

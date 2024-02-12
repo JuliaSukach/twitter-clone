@@ -11,17 +11,7 @@ import SignupLink from "./SignupLink"
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const SignUpModal = ({ buttonClick, logInUser }) => {
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        let userData = {
-            username,
-            email,
-        }
-        logInUser(userData)
-    }
     const [step, setStep] = useState(1)
     const [userData, setUserData] = useState({
         value: '',
@@ -45,6 +35,15 @@ const SignUpModal = ({ buttonClick, logInUser }) => {
 
     const handleNext = (value) => {
         setStep(value)
+    }
+
+    const handleSubmit = () => {
+        debugger
+        let data = {
+            email: userData.value,
+            password: password.value
+        }
+        logInUser(data)
     }
 
     return (
@@ -138,7 +137,7 @@ const SignUpModal = ({ buttonClick, logInUser }) => {
                                                             <span>Next</span>
                                                         </div>
                                                     </div>
-                                                    <div className="forgotPassButton container formButton" href="/" onClick={() => setIsLoginUserOpen(true)}>
+                                                    <div className="forgotPassButton container formButton" href="/" onClick={() => buttonClick(null)}>
                                                         <div className="buttonContent">
                                                             <span>Forgot password?</span>
                                                         </div>

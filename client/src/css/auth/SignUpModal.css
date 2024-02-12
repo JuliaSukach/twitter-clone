@@ -1,9 +1,9 @@
-.group .modal .modalContent .loginForm .closeContainer {
+.group .modal .modalContent .closeContainer {
   flex-shrink: 1;
   flex-basis: 50%;
   flex-grow: 1;
 }
-.group .modal .modalContent .loginForm .space {
+.group .modal .modalContent .space {
   min-width: 56px;
   align-items: flex-end;
   flex-shrink: 1;
