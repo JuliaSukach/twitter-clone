@@ -292,4 +292,7 @@
   text-overflow: unset;
   word-wrap: break-word;
 }
+.hidden {
+  display: none !important;
+}
 /*# sourceMappingURL=Home.css.map */

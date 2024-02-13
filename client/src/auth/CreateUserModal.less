@@ -348,6 +348,28 @@
                                             }
                                         }
                                     }
+
+                                    &.activeLabel, .emptyLabel, .invalidInput {
+                                        .textWrap {
+                                            &.focused {
+                                                padding: 8px 8px 0px 8px !important;
+                                                line-height: normal !important;
+                                                span {
+                                                    vertical-align: top;
+                                                    font-size: small;
+                                                }
+                                            }
+                                        }
+
+                                        .inputWrap {
+                                            .userInput {
+                                                .polite {
+                                                    display: flex;
+                                                    flex-direction: row;
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
 
                                 .assertive {
@@ -361,9 +383,9 @@
                                         padding-right: 20px;
                                         padding-top: 2px;
 
-                                        .hidden {
-                                            display: none;
-                                        }
+                                        // .hidden {
+                                        //     display: none;
+                                        // }
 
                                         .assertiveContent {
                                             align-self: flex-start;
@@ -390,24 +412,6 @@
                                                 word-wrap: break-word;
                                             }
                                         }
-                                    }
-                                }
-
-                                .activeLabel, .emptyLabel, .invalidInput {
-                                    .textWrap {
-                                        &.focused {
-                                            padding: 8px 8px 0px 8px !important;
-                                            line-height: normal !important;
-                                            span {
-                                                vertical-align: top;
-                                                font-size: small;
-                                            }
-                                        }
-                                    }
-
-                                    .polite {
-                                        display: flex !important;
-                                        flex-direction: row;
                                     }
                                 }
 

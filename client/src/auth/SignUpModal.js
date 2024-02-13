@@ -8,6 +8,7 @@ import PasswordForm  from "./PasswordForm"
 import Button from "./Button"
 import SignupLink from "./SignupLink"
 import Button1 from "./Button1"
+import Input from "./Input"
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -100,25 +101,16 @@ const SignUpModal = ({ buttonClick, logInUser }) => {
                                                     <Divider />
                                                 </>
                                             )}
-                                            <div className='nameBox container'>
-                                                <label className={`container ${userData.isLoginActive ? 'activeLabel' : ''} ${userData.value.length ? 'filled' : ''} ${step === 2 ? 'disabled': ''}`}
-                                                    onFocus={() => setUserData({...userData, 'isLoginActive': true })}
-                                                    onBlur={() => setUserData({...userData, 'isLoginActive': false })}
-                                                >
-                                                    <div className="inputWrap container">
-                                                        <div className="userInput container">
-                                                            <div className={`textWrap containerBlock ${userData.isLoginActive ? 'focused' : ''}`}>
-                                                                <span className="containerBlock">Email address or username</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="inputBox container">
-                                                            <div className="wrap containerBlock">
-                                                                <input type="text" value={userData.value} onChange={(event) => handleData(event, 'value')} disabled={step === 2 ? true : false}/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                            </div>
+                                            <Input
+                                                onFocus={() => setUserData({...userData, 'isLoginActive': true })}
+                                                onBlur={() => setUserData({...userData, 'isLoginActive': false })}
+                                                onChange={(event) => handleData(event, 'value')}
+                                                isActive={userData.isLoginActive}
+                                                isFilled={userData.value.length}
+                                                disabled={step === 2}
+                                                value={userData.value}
+                                                text={'Email address or username'}
+                                            />
                                             {step === 2 && (
                                                 <>
                                                     <PasswordForm
