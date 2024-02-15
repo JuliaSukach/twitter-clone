@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState } from "react"
 import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css"
 import Tooltip from "../utils/tooltip/Tooltip"
-import UserNameInput from "./UserNameInput"
-import EmailInput from "./EmailInput"
-import BirthdayInput from "./BirthdayInput"
-import BirthdayForm from "./BirthdayForm"
-import VerificationForm from "./VerificationForm"
-import PasswordForm  from "./PasswordForm"
 import Button from "./Button"
-import Button1 from "../auth/Button1"
+import Step1 from "./Step1"
+import Step2 from "./Step2"
+import Step3 from "./Step3"
+import Step4 from "./Step4"
 
 const TITLES = {
     3: 'We sent you a code',
@@ -97,7 +94,9 @@ const CreateUserModal = ({ buttonClick, signUpUser }) => {
     })
 
     const handleNext = (value) => {
-        if (value === 3) {
+        if (value === 2) {
+            handleBlur()
+        } else if (value === 3) {
             setIsDataComplete(false)
             handleVerification()
             setActiveInputs((prev) => ({ ...Object.fromEntries(Object.keys(prev).map((key) => [key, key === 'verification'])), 'verification': true }))
@@ -145,47 +144,6 @@ const CreateUserModal = ({ buttonClick, signUpUser }) => {
         showPassword: false,
         isValid: true
     })
-
-    const usernameComponent = <UserNameInput
-            step={step}
-            field='username'
-            currValue={userData.username}
-            isActive={activeInputs.username}
-            handleChange={handleChange}
-            onFocus={() => handleFocus('username')}
-            onBlur={handleBlur}>
-        </UserNameInput>
-
-    const emailComponent = <EmailInput
-            field='email'
-            currValue={userData.email}
-            isActive={activeInputs.email}
-            isValid={isValid}
-            setIsValid={setIsValid}
-            handleChange={handleChange}
-            onFocus={() => handleFocus('email')}
-            onBlur={handleBlur}>
-        </EmailInput>
-
-    const birthdaySelectComponent = <BirthdayForm
-            isMonthActive={activeInputs.month}
-            isDayActive={activeInputs.day}
-            isYearActive={activeInputs.year}
-            month={userData.month}
-            day={userData.day}
-            year={userData.year}
-            handleChange={handleChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-        ></BirthdayForm>
-
-    const birthdayComponent = <BirthdayInput
-            field='birthday'
-            currValue={`${userData.month} ${userData.day}, ${userData.year}`}
-            handleChange={handleChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-        ></BirthdayInput>
 
     return (
         <div className="group container">
@@ -249,45 +207,43 @@ const CreateUserModal = ({ buttonClick, signUpUser }) => {
                                             </div>
                                         </div>
                                         <div className="container">
-                                            { step === 1 ? (
-                                                usernameComponent
-                                            ) : (
-                                                step === 2 ? (
-                                                    <div className="editInput container" onClick={() => handleNext(step - 1)}>
-                                                        {usernameComponent}
-                                                    </div>
-                                                ) : null
+                                            { step === 1 && (
+                                                <Step1
+                                                    userData={userData}
+                                                    activeInputs={activeInputs}
+                                                    isValid={isValid}
+                                                    setIsValid={setIsValid}
+                                                    handleChange={handleChange}
+                                                    handleFocus={handleFocus}
+                                                    onBlur={handleBlur}
+                                                />
                                             )}
-                                            { step === 1 ? (
-                                                emailComponent
-                                            ) : (
-                                                step === 2 ? (
-                                                    <div className="editInput container" onClick={() => handleNext(step - 1)}>{emailComponent}</div>
-                                                ) : null
-                                            )}
-                                            { step === 1 ? (
-                                                birthdaySelectComponent
-                                            ) : (
-                                                step === 2 ? (
-                                                    <div className="editInput container" onClick={() => handleNext(step - 1)}>{birthdayComponent}</div>
-                                                ) : null
+                                            { step === 2 && (
+                                                <Step2
+                                                    userData={userData}
+                                                    activeInputs={activeInputs}
+                                                    isValid={isValid}
+                                                    setIsValid={setIsValid}
+                                                    handleChange={handleChange}
+                                                    handleFocus={handleFocus}
+                                                    onBlur={handleBlur}
+                                                    handleNext={() => handleNext(step - 1)}
+                                                />
                                             )}
                                             { step === 3 && (
-                                                <VerificationForm
-                                                    isActive={activeInputs.verification}
-                                                    code={verification.userCode}
+                                                <Step3
+                                                    activeInputs={activeInputs}
+                                                    verification={verification}
                                                     handleChange={handleVerificationCode}
-                                                    onFocus={() => handleFocus('verification')}
+                                                    handleFocus={handleFocus}
                                                     onBlur={handleBlur}
-                                                    field='userCode'
                                                 />
                                             )}
                                             { step === 4 && (
-                                                <PasswordForm
-                                                    isActive={activeInputs.password}
-                                                    onFocus={() => handleFocus('password')}
+                                                <Step4
+                                                    activeInputs={activeInputs}
+                                                    handleFocus={handleFocus}
                                                     onBlur={handleBlur}
-                                                    field='value'
                                                     password={password}
                                                     handleChange={handlePassword}
                                                 />

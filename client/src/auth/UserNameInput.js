@@ -3,7 +3,7 @@ import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css"
 import Input from "./Input"
 
-const UserNameInput = ({ isActive, onFocus, onBlur, handleChange, field, currValue, step }) => {
+const UserNameInput = ({ isActive, onFocus, onBlur, handleChange, field, currValue }) => {
     const [emptyInput, setEmptyInput] = useState(false)
     const handleInputChange = (event) => {
         let value = event.target.value

@@ -2,10 +2,10 @@ import React,  { useRef, useEffect } from "react"
 import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css"
 
-const Input = ({ onFocus, onBlur, onChange, onClick, isActive, isFilled, isEmpty = null, isValid = null, disabled, value, text, role=null, hint='', type = 'text' }) => {
+const Input = ({ onFocus, onBlur, onChange, onClick, isActive, isFilled, isEmpty = null, isValid = null, disabled, value, text, role = null, hint = '', type = 'text' }) => {
     const selectRef = useRef(null)
     useEffect(() => {
-        if (['name', 'code', 'password'].includes(role)) {
+        if (['name', 'code', 'password'].includes(role) && isActive) {
             selectRef.current.focus()
         }
     }, [])

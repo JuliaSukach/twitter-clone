@@ -10,10 +10,7 @@ import SignupLink from "./SignupLink"
 import Button1 from "./Button1"
 import Input from "./Input"
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
 const SignUpModal = ({ buttonClick, logInUser }) => {
-
     const [step, setStep] = useState(1)
     const [userData, setUserData] = useState({
         value: '',
@@ -40,7 +37,6 @@ const SignUpModal = ({ buttonClick, logInUser }) => {
     }
 
     const handleSubmit = () => {
-        debugger
         let data = {
             email: userData.value,
             password: password.value
@@ -59,7 +55,7 @@ const SignUpModal = ({ buttonClick, logInUser }) => {
                                 <div className="header container">
                                     <div className="container">
                                         <div className="headerWrap container">
-                                            <div className="closeContainer container">
+                                            <div className="closeContainer container center">
                                                 <Tooltip text="Close">
                                                     <div className="closeWrap container" onClick={() => buttonClick(null)}>
                                                         <div className="close container">

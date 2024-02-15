@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState } from "react"
 import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css"
 import Input from "./Input"
@@ -10,10 +10,6 @@ const VerificationForm = ({ code, handleChange, isActive, onFocus, onBlur, field
         setInputValue(value)
         handleChange(field, value)
     }
-    const selectRef = useRef(null)
-    useEffect(() => {
-        selectRef.current.focus()
-    }, [])
     return (
         <Input
             onFocus={onFocus}
