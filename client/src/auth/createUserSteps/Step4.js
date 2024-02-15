@@ -1,7 +1,7 @@
 import React  from "react"
-import '../css/home/Home.css'
-import "../css/auth/CreateUserModal.css"
-import PasswordForm from "./PasswordForm"
+import '../../css/home/Home.css'
+import "../../css/auth/CreateUserModal.css"
+import PasswordForm from "../PasswordForm"
 
 const Step4 = ({ activeInputs, handleFocus, onBlur, password, handleChange }) => {
     return (

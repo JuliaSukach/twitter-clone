@@ -15,7 +15,7 @@ const PasswordForm = ({ isActive, onFocus, onBlur, field,  password, handleChang
             onChange={(event) => handleInputChange(event)}
             onClick={() => handleChange('showPassword', !password.showPassword)}
             isActive={isActive}
-            isValid={!password.isValid}
+            isValid={password.isValid}
             isFilled={password.value.length}
             type={password.showPassword ? "text" : "password"}
             text={'Password'}

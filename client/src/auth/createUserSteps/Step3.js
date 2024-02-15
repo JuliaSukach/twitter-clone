@@ -1,7 +1,7 @@
 import React  from "react"
-import '../css/home/Home.css'
-import "../css/auth/CreateUserModal.css"
-import VerificationForm from "./VerificationForm"
+import '../../css/home/Home.css'
+import "../../css/auth/CreateUserModal.css"
+import VerificationForm from "../VerificationForm"
 
 const Step3 = ({ activeInputs, verification, handleChange, handleFocus, onBlur }) => {
     return (

@@ -3,10 +3,10 @@ import '../css/home/Home.css'
 import "../css/auth/CreateUserModal.css"
 import Tooltip from "../utils/tooltip/Tooltip"
 import Button from "./Button"
-import Step1 from "./Step1"
-import Step2 from "./Step2"
-import Step3 from "./Step3"
-import Step4 from "./Step4"
+import Step1 from "./createUserSteps/Step1"
+import Step2 from "./createUserSteps/Step2"
+import Step3 from "./createUserSteps/Step3"
+import Step4 from "./createUserSteps/Step4"
 
 const TITLES = {
     3: 'We sent you a code',

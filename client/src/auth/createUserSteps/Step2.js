@@ -1,9 +1,9 @@
 import React  from "react"
-import '../css/home/Home.css'
-import "../css/auth/CreateUserModal.css"
-import UserNameInput from "./UserNameInput"
-import EmailInput from "./EmailInput"
-import BirthdayInput from "./BirthdayInput"
+import '../../css/home/Home.css'
+import "../../css/auth/CreateUserModal.css"
+import UserNameInput from "../UserNameInput"
+import EmailInput from "../EmailInput"
+import BirthdayInput from "../BirthdayInput"
 
 const Step2 = ({ handleBlur, handleFocus, handleChange, userData, activeInputs, isValid, setIsValid, handleNext }) => {
     return (
