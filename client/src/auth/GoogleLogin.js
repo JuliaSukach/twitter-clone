@@ -14,7 +14,7 @@ const GoogleLogin = ({ mode }) => {
     }
 
     return (
-        <div className={`googleAuth container formButton ${mode === 'modal' ? 'login' : ''}`} onClick={logGoogleUser}>
+        <div className={`googleAuth grey container formButton ${mode === 'modal' ? 'login' : ''}`} onClick={logGoogleUser}>
             <div className="buttonContent container">
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="gmail-icon">
                     <g>

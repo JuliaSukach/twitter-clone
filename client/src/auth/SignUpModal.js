@@ -7,21 +7,10 @@ import Divider from "./Divider"
 import PasswordForm  from "./PasswordForm"
 import Button from "./Button"
 import SignupLink from "./SignupLink"
+import Button1 from "./Button1"
+import Input from "./Input"
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        let userData = {
-            username,
-            email,
-        }
-        logInUser(userData)
-    }
+const SignUpModal = ({ buttonClick, logInUser }) => {
     const [step, setStep] = useState(1)
     const [userData, setUserData] = useState({
         value: '',
@@ -47,6 +36,14 @@ const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
         setStep(value)
     }
 
+    const handleSubmit = () => {
+        let data = {
+            email: userData.value,
+            password: password.value
+        }
+        logInUser(data)
+    }
+
     return (
         <div className="group container">
             <div className="bgContainer container"></div>
@@ -58,9 +55,9 @@ const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
                                 <div className="header container">
                                     <div className="container">
                                         <div className="headerWrap container">
-                                            <div className="closeContainer container">
+                                            <div className="closeContainer container center">
                                                 <Tooltip text="Close">
-                                                    <div className="closeWrap container" onClick={() => setIsLoginUserOpen(false)}>
+                                                    <div className="closeWrap container" onClick={() => buttonClick(null)}>
                                                         <div className="close container">
                                                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                                                 <g>
@@ -100,25 +97,16 @@ const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
                                                     <Divider />
                                                 </>
                                             )}
-                                            <div className='nameBox container'>
-                                                <label className={`container ${userData.isLoginActive ? 'activeLabel' : ''} ${userData.value.length ? 'filled' : ''} ${step === 2 ? 'disabled': ''}`}
-                                                    onFocus={() => setUserData({...userData, 'isLoginActive': true })}
-                                                    onBlur={() => setUserData({...userData, 'isLoginActive': false })}
-                                                >
-                                                    <div className="inputWrap container">
-                                                        <div className="userInput container">
-                                                            <div className={`textWrap containerBlock ${userData.isLoginActive ? 'focused' : ''}`}>
-                                                                <span className="containerBlock">Email address or username</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="inputBox container">
-                                                            <div className="wrap containerBlock">
-                                                                <input type="text" value={userData.value} onChange={(event) => handleData(event, 'value')} disabled={step === 2 ? true : false}/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                            </div>
+                                            <Input
+                                                onFocus={() => setUserData({...userData, 'isLoginActive': true })}
+                                                onBlur={() => setUserData({...userData, 'isLoginActive': false })}
+                                                onChange={(event) => handleData(event, 'value')}
+                                                isActive={userData.isLoginActive}
+                                                isFilled={userData.value.length}
+                                                disabled={step === 2}
+                                                value={userData.value}
+                                                text={'Email address or username'}
+                                            />
                                             {step === 2 && (
                                                 <>
                                                     <PasswordForm
@@ -133,16 +121,16 @@ const SignUpModal = ({ setIsLoginUserOpen, logInUser }) => {
                                             )}
                                             {step === 1 && (
                                                 <>
-                                                    <div className='nextButton container formButton' href="/" onClick={() => handleNext(step + 1)}>
-                                                        <div className="buttonContent">
-                                                            <span>Next</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="forgotPassButton container formButton" href="/" onClick={() => setIsLoginUserOpen(true)}>
-                                                        <div className="buttonContent">
-                                                            <span>Forgot password?</span>
-                                                        </div>
-                                                    </div>
+                                                    <Button1
+                                                        text={'Next'}
+                                                        handleClick={() => handleNext(step + 1)}
+                                                        styleName={'black'}
+                                                    />
+                                                    <Button1
+                                                        text={'Forgot password?'}
+                                                        handleClick={() => buttonClick(null)}
+                                                        styleName={'grey'}
+                                                    />
                                                     <SignupLink/>
                                                 </>
                                             )}

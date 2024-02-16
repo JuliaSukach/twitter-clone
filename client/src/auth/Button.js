@@ -20,7 +20,7 @@ const Button = ({ step, isDataComplete, handleNext, role }) => {
                 <div className="nextWrap container">
                     <div className={`nextBox container ${isDataComplete ? 'active' : ''} ${step === 2 && role !== 'login' ? 'complited' : ''}`} onClick={() => handleNext(step + 1)}>
                         <div className="nextContent containerBlock">
-                            <span className="containerBlock">{step === 2 ? (role === 'login' ? 'Log in' : 'Sign up') : 'Next'}</span>
+                            <span className="containerBlock">{step === 2 ? (role === 'login' ? 'Log in' : 'Sign up') : (step === 5 ? 'Skip for now':'Next')}</span>
                         </div>
                     </div>
                 </div>
