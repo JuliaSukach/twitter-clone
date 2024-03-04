@@ -8,7 +8,6 @@ body {
 }
 #root {
   height: 100%;
-  display: flex;
 }
 #root .app {
   display: flex;
