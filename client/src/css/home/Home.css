@@ -50,7 +50,6 @@
 }
 .container .containerWrap .mainContainer .mainWrap .content .auth .layout {
   max-width: 760px;
-  min-width: 437px;
   padding: 20px;
   width: 100%;
 }
@@ -313,6 +312,12 @@
 @media (max-width: 1000px) {
   .maxLogo {
     display: none !important;
+  }
+}
+@media (max-width: 500px) {
+  .title {
+    font-size: 40px !important;
+    line-height: 52px !important;
   }
 }
 .hidden {
