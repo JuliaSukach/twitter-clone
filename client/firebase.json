@@ -9,7 +9,9 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "/index.html",
+        "key": "Cross-Origin-Embedder-Policy",
+        "value": "unsafe-none"
       }
     ]
   }
