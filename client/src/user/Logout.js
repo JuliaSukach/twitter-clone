@@ -2,7 +2,7 @@ import React from "react"
 import '../css/home/Home.css'
 import '../css/user/Logout.css'
 import { logOutUser } from '../firebase/firebase'
-import { BrowserRouter as useNavigate } from "react-router-dom"
+import { BrowserRouter as Router, Link, Navigate, useNavigate } from "react-router-dom"
 
 function Logout() {
     const navigate = useNavigate()
