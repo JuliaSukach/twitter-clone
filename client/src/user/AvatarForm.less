@@ -1,0 +1,212 @@
+.menu {
+    padding: 12px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    transition-property: background-color, box-shadow;
+
+    .avatarBlock {
+        width: 40px;
+        height: 40px;
+
+        .avatarDim {
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            left: -2px;
+            top: -2px;
+
+            .presentation {
+                background-color: rgba(0, 0, 0, 0);
+
+                .presentationWrap {
+                    background-color: rgb(255, 255, 255);
+                    width: calc(100% - 4px);
+                    height: calc(100% - 4px);
+
+                    .emptyDiv {
+                        display: block;
+                        width: 100%;
+                        padding-bottom: 100%;
+                    }
+                }
+
+                .avatarImg {
+                    right: 0px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    z-index: -1;
+                    background-size: cover;
+                }
+            }
+        }
+    }
+
+    &:hover {
+        background-color: rgba(15, 20, 25, 0.1);
+    }
+}
+
+.avatarAlign {
+    align-items: center;
+}
+
+.avatarBorder {
+    border-radius: 9999px;
+}
+
+.avatarDisplay {
+    display: flex;
+}
+
+.avatarDirection {
+    flex-direction: row;
+}
+
+.displayBlock {
+    display: block;
+}
+
+.overflow {
+    overflow-x: visible;
+    overflow-y: visible;
+}
+
+.overflowHidden {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.bottomZero {
+    bottom: 0px;
+}
+
+.leftZero {
+    left: 0px;
+}
+
+.rightZero {
+    right: 0px;
+}
+
+.fullHeight {
+    height: 100%;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.posAbsolute {
+    position: absolute;
+}
+
+.verticalAlignCenter {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.noPointer {
+    pointer-events: none !important;
+}
+
+.z-index-0 {
+    z-index: 0;
+}
+
+.flexShrink {
+    flex-shrink: 1;
+}
+
+.flexShrink-0 {
+    flex-shrink: 0;
+}
+
+.flexGrow {
+    flex-grow: 1;
+}
+
+.flexInline {
+    display: inline-flex;
+}
+
+.inlineBlock {
+    display: inline-block;
+}
+
+.margin-avatar {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.maxWidth {
+    max-width: 100%;
+}
+
+.minWidth {
+    min-width: 0px;
+    word-wrap: break-word;
+}
+
+.font {
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.no-white-space {
+    white-space: nowrap;
+}
+
+.fontWeight {
+    font-weight: 700;
+}
+
+.fontInherit {
+    font-family: inherit;
+    color: inherit;
+}
+
+.verticalAlign {
+    vertical-align: middle;
+}
+
+.fontWeightLight {
+    font-weight: 400;
+}
+
+.fontStyle {
+    text-overflow: unset;
+    color: rgb(83, 100, 113);
+}
+
+.fontSettings {
+    font-feature-settings: "ss01";
+}
+
+.flexAlignEnd {
+    align-items: flex-end;
+}
+
+.currentColor {
+    fill: currentcolor;
+}
+
+.height-1 {
+    height: 1.25em;
+}
+
+.relative {
+    position: relative;
+}
+
+.verticalAlignBottom {
+    vertical-align: text-bottom;
+}
+
+.userSelectNone {
+    user-select: none;
+}
+
+.dotColor {
+    color: rgba(15, 20, 25, 1.00);
+}
