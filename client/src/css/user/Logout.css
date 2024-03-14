@@ -1,0 +1,148 @@
+.logout {
+  top: 0px;
+  max-width: 80vw;
+  min-height: calc(64px*3);
+  align-self: center;
+  width: 320px;
+  outline-style: none;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  position: fixed;
+  align-items: center;
+}
+.logout .background {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.logout .content {
+  max-height: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  border-radius: 16px;
+  padding: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.logout .content .header {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.logout .content .infoWrap {
+  text-align: left;
+  min-width: 0px;
+  word-wrap: break-word;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.logout .content .infoWrap.textContainer {
+  width: 100%;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.logout .content .logo {
+  max-width: 100%;
+  display: inline-block;
+  position: relative;
+  fill: #0f1419;
+  vertical-align: text-bottom;
+  font-size: 32px;
+  margin-bottom: 16px;
+  color: #0f1419;
+  height: 40px;
+  user-select: none;
+}
+.logout .content .box {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0 solid black;
+  box-sizing: border-box;
+  color: inherit;
+  display: inline;
+  font: inherit;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: inherit;
+}
+.logout .content .box.option {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+  font-size: 15px;
+  line-height: 20px;
+  text-overflow: unset;
+}
+.logout .content .text {
+  min-width: 0px;
+  word-wrap: break-word;
+  font-family: inherit;
+}
+.logout .content .buttonWrapper {
+  flex-direction: column;
+  margin-bottom: calc(-12px);
+  margin-right: calc(-12px);
+  margin-top: 24px;
+  width: 100%;
+}
+.logout .content .buttonWrapper .button {
+  border-radius: 9999px;
+  border-style: solid;
+  border-width: 1px;
+  user-select: none;
+  flex-grow: 1;
+  margin-bottom: 12px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 44px;
+  min-width: 44px;
+  padding-left: 24px;
+  padding-right: 24px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  transition-property: background-color, box-shadow;
+  outline-style: none;
+}
+.logout .content .buttonWrapper .button.out {
+  border-color: rgba(0, 0, 0, 0);
+  background-color: #0f1419;
+}
+.logout .content .buttonWrapper .button.out .optionWrap {
+  text-overflow: unset;
+  color: #ffffff;
+}
+.logout .content .buttonWrapper .button.cancel {
+  border-color: #cfd9de;
+  background-color: rgba(0, 0, 0, 0);
+}
+.logout .content .buttonWrapper .button.cancel .optionWrap {
+  text-overflow: unset;
+  color: #0f1419;
+}
+.logout .content .buttonWrapper .button .optionWrap {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  flex-grow: 1;
+  font-weight: 700;
+  line-height: 20px;
+  font-size: 15px;
+  text-align: center;
+  min-width: 0px;
+  word-wrap: break-word;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+/*# sourceMappingURL=Logout.css.map */

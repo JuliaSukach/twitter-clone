@@ -3,6 +3,7 @@ import "./css/App.css"
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 import Home from "./home/Home"
 import User from "./user/User"
+import Logout from "./user/Logout"
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Route path="/" element={<Home />}/>
                 <Route path="/i/flow/signup" element={<Home/>}/>
                 <Route path="/i/flow/login" element={<Home/>}/>
+                <Route path="/logout" element={<Logout/>}/>
             </Routes>
         </BrowserRouter>
     )

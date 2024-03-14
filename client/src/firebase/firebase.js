@@ -48,4 +48,12 @@ export const signInExistingUser = async (email, password) => {
     }
 }
 
+export const logOutUser = async() => {
+    try {
+        await auth.signOut()
+    } catch (error) {
+        console.error('Logout error:', error)
+    }
+}
+
 export default db
