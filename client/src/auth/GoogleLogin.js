@@ -9,7 +9,7 @@ const GoogleLogin = ({ mode }) => {
     const logGoogleUser = async () => {
         const response = await signInWithGooglePopup()
         if (response.user) {
-            navigate('/user')
+            navigate('/home')
         }
     }
 

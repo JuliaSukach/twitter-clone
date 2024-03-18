@@ -22,33 +22,33 @@ function Popup({ onClose }) {
     }, [])
 
     return (
-        <div className="container popup" style={{ left: `23px`, bottom: '85px' }} ref={popupRef}>
-            <div className="container content flex">
-                <div tabindex="0" className="container"></div>
-                <div role="group" tabindex="0" className="container outlineNone">
+        <div className='container popup' style={{ left: `23px`, bottom: '85px' }} ref={popupRef}>
+            <div className='container content flex'>
+                <div tabindex='0' className='container'></div>
+                <div role='group' tabindex='0' className='container outlineNone'>
                     <div>
-                        <div className="container">
-                            <div className="container background">
-                                <svg viewBox="0 0 24 24" aria-hidden="true" className="pointer" style={{ left: 'calc(19.9965px)' }}>
-                                    <g><path d="M22 17H2L12 6l10 11z"></path></g>
+                        <div className='container'>
+                            <div className='container background'>
+                                <svg viewBox='0 0 24 24' aria-hidden='true' className='pointer' style={{ left: 'calc(19.9965px)' }}>
+                                    <g><path d='M22 17H2L12 6l10 11z'></path></g>
                                 </svg>
-                                <div className="container wrap">
-                                    <div className="container wrapContent">
-                                        <a href="/i/flow/login" role="menuitem" className="container row outlineNone">
-                                            <div className="container flex">
-                                                <div dir="ltr" className="action containerBlock">
-                                                    <span className="containerBlock actionText">Add an existing account</span>
+                                <div className='container wrap'>
+                                    <div className='container wrapContent'>
+                                        <a href='/i/flow/login' role='menuitem' className='container row outlineNone'>
+                                            <div className='container flex'>
+                                                <div dir='ltr' className='action containerBlock'>
+                                                    <span className='containerBlock actionText'>Add an existing account</span>
                                                 </div>
                                             </div>
-                                            <div className="container additionSpace"></div>
+                                            <div className='container additionSpace'></div>
                                         </a>
-                                        <a href="/logout" role="menuitem" className="container row outlineNone">
-                                            <div className="container flex">
-                                                <div dir="ltr" className="action containerBlock">
-                                                    <span className="containerBlock actionText">Log out @yulia_sukach</span>
+                                        <a href='/logout' role='menuitem' className='container row outlineNone'>
+                                            <div className='container flex'>
+                                                <div dir='ltr' className='action containerBlock'>
+                                                    <span className='containerBlock actionText'>Log out @yulia_sukach</span>
                                                 </div>
                                             </div>
-                                            <div className="container"></div>
+                                            <div className='container'></div>
                                         </a>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@ function Popup({ onClose }) {
                         </div>
                     </div>
                 </div>
-                <div tabindex="0" className="container"></div>
+                <div tabindex='0' className='container'></div>
             </div>
         </div>
     )

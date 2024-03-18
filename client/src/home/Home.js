@@ -16,7 +16,6 @@ import Button1 from "../auth/Button1"
 function Home() {
     const [mode, setMode] = useState(null)
 
-
     const [error, setError] = useState(null)
     const navigate = useNavigate()
     const signUpUser = async (data) => {
@@ -36,7 +35,7 @@ function Home() {
                         year
                     }
                 })
-                //navigate('/user')
+                //navigate('/home')
             } catch (e) {
                 console.error("Error adding the user: ", e)
                 setError("An error occurred while sending the tweet. Please try again.")
@@ -48,7 +47,7 @@ function Home() {
         let { password, email } = data
         const response = await signInExistingUser(email, password)
         if (response.user) {
-            navigate('/user')
+            navigate('/home')
         }
     }
 
