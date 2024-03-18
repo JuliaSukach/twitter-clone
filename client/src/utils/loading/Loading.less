@@ -1,0 +1,48 @@
+.loading {
+    top: 0px;
+    max-width: 80vw;
+    min-height: calc(64px* 3);
+    align-self: center;
+    width: 320px;
+    position: fixed;
+    outline-style: none;
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+    position: fixed;
+    align-items: center;
+
+    .background {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background-color: rgba(255, 255, 255, 1.00);;
+    }
+
+    .content {
+        max-height: 100%;
+        max-width: 600px;
+        background-color: rgba(255, 255, 255, 1.00);
+        overflow-y: auto;
+        border-radius: 16px;
+        padding: 32px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+
+        .logo {
+            max-width: 100%;
+            display: inline-block;
+            position: relative;
+            fill: rgb(15, 20, 25);
+            vertical-align: text-bottom;
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: rgba(15, 20, 25, 1.00);
+            height: 60px;
+            user-select: none;
+        }
+    }
+}

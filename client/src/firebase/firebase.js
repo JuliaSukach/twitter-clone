@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
 import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
-    sendEmailVerification, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
+    sendEmailVerification, signInWithEmailAndPassword, updateProfile, onAuthStateChanged } from "firebase/auth"
 
 const firebaseConfig = {
     apiKey: "AIzaSyAE9WQ_pqV26AwG8Q3OUeXX8vf4AE4tAZc",
@@ -55,5 +55,16 @@ export const logOutUser = async() => {
         console.error('Logout error:', error)
     }
 }
+
+export const isUserLoggedIn = (callback) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        unsubscribe() // Unsubscribe after getting the user information
+        callback(user) // Call the callback function with the user information
+    }, (error) => {
+        console.error('Error checking user authentication:', error)
+        callback(null, error) // Call the callback function with null user and error
+    })
+}
+
 
 export default db
