@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+<p align="center">Twitter clone built in React.js + Express,js + Less using Cloud Firestore and Storage</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Preview :clapper:
 
-## Available Scripts
+<img width="1425" alt="homepage" src="https://github.com/JuliaSukach/twitter-clone/assets/35064670/a4da4cbe-467b-475d-bffb-85a561829931">
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features :sparkles:
 
-### `npm test`
+  - Authentication with Firebase Authentication
+  - Strongly typed React components
+  - Users can add tweets, like, retweet, and reply
+  - Users can delete tweets, add a tweet to bookmarks, and pin their tweet
+  - Users can add images and GIFs to tweet
+  - Users can follow and unfollow other users
+  - Users can see their and other followers and the following list
+  - Users can see all users and the trending list
+  - Realtime update likes, retweets, and user profile
+  - Realtime trending data from Twitter API
+  - User can edit their profile
+  - Responsive design for mobile, tablet, and desktop
+  - Users can customize the site color scheme and color background
+  - All images uploads are stored on Firebase Cloud Storage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech :hammer_and_pick:
 
-### `npm run build`
+  - [Express](https://expressjs.com/)
+  - [React](https://react.dev/)
+  - [Less](https://lesscss.org/)
+  - [Firebase](https://firebase.google.com/)
+  - [Nodemailer](https://www.nodemailer.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Development :computer:
+Here are the steps to run the project locally.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  1. Clone the repository
+  ```
+  https://github.com/JuliaSukach/twitter-clone.git
+  ```
+  2. Install dependencies
+  ```
+  npm i
+  ```
+  3. Create a Firebase project and select the web app
+  4. Add your Firebase config to .env.development. Note that NEXT_PUBLIC_MEASUREMENT_ID is optional
+  5. Make sure you have enabled the following Firebase services:
+      - Authentication. Enable the Google sign-in method.
+      - Cloud Firestore. Create a database and set its location to your nearest region.
+      - Cloud Storage. Create a storage bucket.
+  6. Install Firebase CLI globally
+     ```
+     npm i -g firebase-tools
+     ```
+  7. Log in to Firebase
+     ```
+     firebase login
+     ```
+  8. Get your project ID
+     ```
+     firebase projects:list
+     ```
+  9. Select your project ID
+     ```
+     firebase use your-project-id
+     ```
+  10. Run this project using the Firebase on the cloud
+      
+      1. Deploy Firestore rules, Firestore indexes, and Cloud Storage rules
+         ```
+         firebase deploy --except functions
+         ```
+      2. Run the project
+         ```
+           npm run dev
+         ```
+      
+     
