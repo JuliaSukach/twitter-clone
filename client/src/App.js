@@ -1,6 +1,6 @@
 import React from "react"
 import "./css/App.css"
-import { BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./home/Home"
 import User from "./user/User"
 import Logout from "./user/Logout"

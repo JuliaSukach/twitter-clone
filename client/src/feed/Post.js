@@ -1,11 +1,11 @@
-import { Avatar } from "@material-ui/core";
+import { Avatar } from "@mui/material";
 import {
     ChatBubbleOutline,
     FavoriteBorder,
     Publish,
     Repeat,
     VerifiedUser,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import React, { useState } from "react";
 import "../css/feed/Post.css";
 import { doc, deleteDoc } from "firebase/firestore";

@@ -1,4 +1,4 @@
-import { Avatar, Button } from "@material-ui/core";
+import { Avatar, Button } from "@mui/material";
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import db from "../firebase/firebase";
